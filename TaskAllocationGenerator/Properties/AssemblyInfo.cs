@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TaskAllocationGenerator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Task Allocation Generator")]
+[assembly: AssemblyDescription("An application helps determine a set of allocations such that each allocation specifies which tasks are allocated to run on a particular processor. These allocations are based on data from within a configuration file")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TaskAllocationGenerator")]
+[assembly: AssemblyCompany("Deakin University")]
+[assembly: AssemblyProduct("Task Allocation Generator")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
