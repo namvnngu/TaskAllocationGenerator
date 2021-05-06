@@ -26,7 +26,7 @@ namespace TaskAllocationGenerator
         private void AboutToolStripMenuItemClick(object sender, EventArgs e)
         {
             AboutBoxForm aboutBox = new AboutBoxForm();
-
+            webBrowser.DocumentText = "<h1 padding=\" top: 100px \">Hello</h1>";
             aboutBox.ShowDialog();
         }
     }

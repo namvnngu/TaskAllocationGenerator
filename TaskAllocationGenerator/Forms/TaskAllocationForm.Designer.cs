@@ -39,6 +39,9 @@ namespace TaskAllocationGenerator
             this.errorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
+            this.generatorButton = new System.Windows.Forms.Button();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +66,7 @@ namespace TaskAllocationGenerator
             this.openToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 36);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 44);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -84,7 +87,7 @@ namespace TaskAllocationGenerator
             this.allocationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.validateToolStripMenuItem});
             this.allocationToolStripMenuItem.Name = "allocationToolStripMenuItem";
-            this.allocationToolStripMenuItem.Size = new System.Drawing.Size(141, 36);
+            this.allocationToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
             this.allocationToolStripMenuItem.Text = "Allocation";
             // 
             // validateToolStripMenuItem
@@ -98,7 +101,7 @@ namespace TaskAllocationGenerator
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.errorsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 36);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 44);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // errorsToolStripMenuItem
@@ -112,7 +115,7 @@ namespace TaskAllocationGenerator
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(85, 36);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(85, 44);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -122,12 +125,42 @@ namespace TaskAllocationGenerator
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
+            // urlTextBox
+            // 
+            this.urlTextBox.Location = new System.Drawing.Point(12, 47);
+            this.urlTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.urlTextBox.Multiline = true;
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(564, 39);
+            this.urlTextBox.TabIndex = 1;
+            // 
+            // generatorButton
+            // 
+            this.generatorButton.Location = new System.Drawing.Point(579, 47);
+            this.generatorButton.Name = "generatorButton";
+            this.generatorButton.Size = new System.Drawing.Size(189, 45);
+            this.generatorButton.TabIndex = 2;
+            this.generatorButton.Text = "Generate TAFF";
+            this.generatorButton.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser
+            // 
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.webBrowser.Location = new System.Drawing.Point(0, 89);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(1164, 559);
+            this.webBrowser.TabIndex = 3;
+            // 
             // TaskAllocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 648);
+            this.Controls.Add(this.generatorButton);
+            this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.webBrowser);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "TaskAllocationForm";
             this.Text = "Task Allocation Generator";
@@ -150,6 +183,9 @@ namespace TaskAllocationGenerator
         private System.Windows.Forms.ToolStripMenuItem errorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.TextBox urlTextBox;
+        private System.Windows.Forms.Button generatorButton;
+        private System.Windows.Forms.WebBrowser webBrowser;
     }
 }
 
