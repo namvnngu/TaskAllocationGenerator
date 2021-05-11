@@ -55,7 +55,8 @@ namespace TaskAllocationGenerator
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1164, 40);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip.Size = new System.Drawing.Size(582, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -65,19 +66,19 @@ namespace TaskAllocationGenerator
             this.openToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 36);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(208, 44);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(208, 44);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -86,13 +87,13 @@ namespace TaskAllocationGenerator
             this.allocationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.validateToolStripMenuItem});
             this.allocationToolStripMenuItem.Name = "allocationToolStripMenuItem";
-            this.allocationToolStripMenuItem.Size = new System.Drawing.Size(141, 36);
+            this.allocationToolStripMenuItem.Size = new System.Drawing.Size(73, 22);
             this.allocationToolStripMenuItem.Text = "Allocation";
             // 
             // validateToolStripMenuItem
             // 
             this.validateToolStripMenuItem.Name = "validateToolStripMenuItem";
-            this.validateToolStripMenuItem.Size = new System.Drawing.Size(233, 44);
+            this.validateToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.validateToolStripMenuItem.Text = "Validate";
             // 
             // viewToolStripMenuItem
@@ -100,13 +101,13 @@ namespace TaskAllocationGenerator
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.errorsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 36);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // errorsToolStripMenuItem
             // 
             this.errorsToolStripMenuItem.Name = "errorsToolStripMenuItem";
-            this.errorsToolStripMenuItem.Size = new System.Drawing.Size(209, 44);
+            this.errorsToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.errorsToolStripMenuItem.Text = "Errors";
             // 
             // helpToolStripMenuItem
@@ -114,53 +115,58 @@ namespace TaskAllocationGenerator
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(85, 36);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(214, 44);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(12, 47);
+            this.urlTextBox.Location = new System.Drawing.Point(6, 24);
             this.urlTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.urlTextBox.Multiline = true;
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(564, 39);
+            this.urlTextBox.Size = new System.Drawing.Size(284, 22);
             this.urlTextBox.TabIndex = 1;
+            this.urlTextBox.Text = "https://sit323.blob.core.windows.net/pt2/PT2 - Test1.cff";
             // 
             // generatorButton
             // 
-            this.generatorButton.Location = new System.Drawing.Point(579, 47);
+            this.generatorButton.Location = new System.Drawing.Point(290, 24);
+            this.generatorButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.generatorButton.Name = "generatorButton";
-            this.generatorButton.Size = new System.Drawing.Size(227, 45);
+            this.generatorButton.Size = new System.Drawing.Size(114, 23);
             this.generatorButton.TabIndex = 2;
             this.generatorButton.Text = "Generate Allocations";
             this.generatorButton.UseVisualStyleBackColor = true;
+            this.generatorButton.Click += new System.EventHandler(this.GeneratorButtonClick);
             // 
             // webBrowser
             // 
             this.webBrowser.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.webBrowser.Location = new System.Drawing.Point(0, 89);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Location = new System.Drawing.Point(0, 46);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(10, 10);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(1164, 559);
+            this.webBrowser.Size = new System.Drawing.Size(582, 291);
             this.webBrowser.TabIndex = 3;
             // 
             // TaskAllocationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 648);
+            this.ClientSize = new System.Drawing.Size(582, 337);
             this.Controls.Add(this.generatorButton);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.webBrowser);
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TaskAllocationForm";
             this.Text = "Task Allocation Generator";
             this.menuStrip.ResumeLayout(false);

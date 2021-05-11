@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskAllocationGenerator.Forms;
+using TaskAllocationGenerator.Utils.Files;
 
 namespace TaskAllocationGenerator
 {
@@ -26,8 +27,13 @@ namespace TaskAllocationGenerator
         private void AboutToolStripMenuItemClick(object sender, EventArgs e)
         {
             AboutBoxForm aboutBox = new AboutBoxForm();
-            webBrowser.DocumentText = "<h1 padding=\" top: 100px \">Hello</h1>";
             aboutBox.ShowDialog();
+        }
+
+        private void GeneratorButtonClick(object sender, EventArgs e)
+        {
+            ConfigurationFile configurationFile = new ConfigurationFile(urlTextBox.Text);
+            configurationFile.ReadAndExtractData();
         }
     }
 }
