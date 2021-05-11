@@ -47,7 +47,6 @@ namespace TaskAllocationGenerator
             // 
             // menuStrip
             // 
-            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -66,7 +65,7 @@ namespace TaskAllocationGenerator
             this.openToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 44);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 36);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -87,7 +86,7 @@ namespace TaskAllocationGenerator
             this.allocationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.validateToolStripMenuItem});
             this.allocationToolStripMenuItem.Name = "allocationToolStripMenuItem";
-            this.allocationToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
+            this.allocationToolStripMenuItem.Size = new System.Drawing.Size(141, 36);
             this.allocationToolStripMenuItem.Text = "Allocation";
             // 
             // validateToolStripMenuItem
@@ -101,7 +100,7 @@ namespace TaskAllocationGenerator
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.errorsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 44);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 36);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // errorsToolStripMenuItem
@@ -115,7 +114,7 @@ namespace TaskAllocationGenerator
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(85, 44);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(85, 36);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -138,9 +137,9 @@ namespace TaskAllocationGenerator
             // 
             this.generatorButton.Location = new System.Drawing.Point(579, 47);
             this.generatorButton.Name = "generatorButton";
-            this.generatorButton.Size = new System.Drawing.Size(189, 45);
+            this.generatorButton.Size = new System.Drawing.Size(227, 45);
             this.generatorButton.TabIndex = 2;
-            this.generatorButton.Text = "Generate TAFF";
+            this.generatorButton.Text = "Generate Allocations";
             this.generatorButton.UseVisualStyleBackColor = true;
             // 
             // webBrowser
