@@ -5,16 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using TaskAllocationGenerator.Utils.Classes;
 
 namespace TaskAllocationGenerator.Utils.Files
 {
-    class ConfigurationFile
+    public class ConfigurationFile
     {
         public string Source { get; set; }
+        public string LogFilename { get; set; }
+        public Limits LimitData { get; set; }
+        public ProgramInfo Program { get; set; }
+        public List<Classes.Task> Tasks { get; set; }
+        public List<Processor> Processors { get; set; }
+        public List<ProcessorType> ProcessorTypes { get; set; }
+        public LocalCommunication LocalCommunicationInfo { get; set; }
+        public RemoteCommunication RemoteCommunicationInfo { get; set; }
 
         public ConfigurationFile()
         {
-
+            Source = null;
+            LogFilename = null;
         }
 
         public ConfigurationFile(string source)
@@ -24,13 +34,21 @@ namespace TaskAllocationGenerator.Utils.Files
 
         public void ReadAndExtractData()
         {
+            if (Source == null)
+            {
+                return;
+            }
+
             WebClient webClient = new WebClient();
             Stream stream = webClient.OpenRead(Source);
             StreamReader streamReader = new StreamReader(stream);
+            string line;
 
             while (!streamReader.EndOfStream)
             {
-                Console.WriteLine(streamReader.ReadLine());
+
+                line = streamReader.ReadLine();
+                line = line.Trim();
             }
 
             streamReader.Close();
