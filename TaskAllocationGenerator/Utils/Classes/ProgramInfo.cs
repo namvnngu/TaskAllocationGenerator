@@ -37,7 +37,7 @@ namespace TaskAllocationGenerator.Utils.Classes
 
             text.AppendLine($"PROGRAM-{CffKeywords.PROGRAM_DURATION}={Duration}");
             text.AppendLine($"PROGRAM-{CffKeywords.PROGRAM_TASKS}={Tasks}");
-            text.AppendLine($"PROGRAM-{CffKeywords.CLOSING_PROCESSOR}={Processors}");
+            text.AppendLine($"PROGRAM-{CffKeywords.PROGRAM_PROCESSORS}={Processors}");
 
             return text.ToString();
         }

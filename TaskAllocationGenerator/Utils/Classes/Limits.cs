@@ -86,5 +86,4 @@ namespace TaskAllocationGenerator.Utils.Classes
             return text.ToString(); 
         }
     }
-    }
 }

@@ -77,12 +77,5 @@ namespace TaskAllocationGenerator.Utils.Constants
         public static string REMOTE_COMMUNICATION_MAP = "MAP";
 
         public static string COMMENT = "//";
-
-        public static Dictionary<string, string> KEYWORD_DICT = (new CffKeywords())
-                                                .GetType()
-                                                .GetFields(BindingFlags.Public | BindingFlags.Static)
-                                                .Where(f => f.FieldType == typeof(string))
-                                                .ToDictionary(f => f.Name,
-                                                              f => (string)f.GetValue(null));
     }
 }
