@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TaskAllocationGenerator.Utils.Constants;
+using TaskAllocationUtils.Constants;
 
-namespace TaskAllocationGenerator.Utils.Classes
+namespace TaskAllocationUtils.Classes
 {
     public class Task
     {

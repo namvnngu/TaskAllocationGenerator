@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskAllocationGenerator.Utils.Classes
+namespace TaskAllocationUtils.Classes
 {
     /// <summary>
     /// The class inherits the Commnucation superclass
-    /// without redefining any behaviours.
+    /// without overriding any behaviours.
     /// </summary>
-    public class RemoteCommunication : Communication
+    public class LocalCommunication : Communication
     {
-        public RemoteCommunication()
+        public LocalCommunication()
         {
         }
 
-        public RemoteCommunication(Map mapData) : base(mapData)
+        public LocalCommunication(Map mapData) : base(mapData)
         {
         }
     }

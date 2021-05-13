@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskAllocationGenerator.Utils.Classes
+namespace TaskAllocationUtils.Classes
 {
     public class PairSection
     {

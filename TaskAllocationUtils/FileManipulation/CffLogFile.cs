@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskAllocationGenerator.Utils.Constants;
-using TaskAllocationGenerator.Utils.Classes;
+using TaskAllocationUtils.Constants;
+using TaskAllocationUtils.Classes;
 
-namespace TaskAllocationGenerator.Utils.FileManipulation
+namespace TaskAllocationUtils.FileManipulation
 {
     public class CffLogFile
     {

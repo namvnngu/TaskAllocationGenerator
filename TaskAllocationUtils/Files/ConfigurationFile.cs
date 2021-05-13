@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using TaskAllocationGenerator.Utils.Classes;
-using TaskAllocationGenerator.Utils.FileManipulation;
-namespace TaskAllocationGenerator.Utils.Files
+using TaskAllocationUtils.Classes;
+using TaskAllocationUtils.FileManipulation;
+
+namespace TaskAllocationUtils.Files
 {
     public class ConfigurationFile
     {

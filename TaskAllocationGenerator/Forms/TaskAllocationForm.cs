@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskAllocationGenerator.Forms;
-using TaskAllocationGenerator.Utils.Files;
+using TaskAllocationUtils.Files;
 
 namespace TaskAllocationGenerator
 {

@@ -67,25 +67,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\Classes\Communication.cs" />
-    <Compile Include="Utils\Classes\Limits.cs" />
-    <Compile Include="Utils\Classes\LocalCommunication.cs" />
-    <Compile Include="Utils\Classes\Map.cs" />
-    <Compile Include="Utils\Classes\PairSection.cs" />
-    <Compile Include="Utils\Classes\Processor.cs" />
-    <Compile Include="Utils\Classes\ProcessorType.cs" />
-    <Compile Include="Utils\Classes\ProgramInfo.cs" />
-    <Compile Include="Utils\Classes\RemoteCommunication.cs" />
-    <Compile Include="Utils\Classes\Task.cs" />
-    <Compile Include="Utils\Constants\CffKeywords.cs" />
-    <Compile Include="Utils\Constants\Symbols.cs" />
-    <Compile Include="Utils\FileManipulation\CffLimits.cs" />
-    <Compile Include="Utils\FileManipulation\CffLogFile.cs" />
-    <Compile Include="Utils\FileManipulation\CffProgram.cs" />
-    <Compile Include="Utils\FileManipulation\CffTask.cs" />
-    <Compile Include="Utils\FileManipulation\CffTasks.cs" />
-    <Compile Include="Utils\FileManipulation\Extractor.cs" />
-    <Compile Include="Utils\Files\ConfigurationFile.cs" />
     <EmbeddedResource Include="Forms\AboutBoxForm.resx">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +129,14 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskAllocationUtils\TaskAllocationUtils.csproj">
+      <Project>{0ed8ded2-bce2-479b-ad1c-aef35ce6529d}</Project>
+      <Name>TaskAllocationUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

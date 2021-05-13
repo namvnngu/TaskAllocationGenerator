@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskAllocationGenerator.Utils.Classes;
-using TaskAllocationGenerator.Utils.Constants;
+using TaskAllocationUtils.Classes;
+using TaskAllocationUtils.Constants;
 
-namespace TaskAllocationGenerator.Utils.FileManipulation
+namespace TaskAllocationUtils.FileManipulation
 {
     public class CffLimits
     {
