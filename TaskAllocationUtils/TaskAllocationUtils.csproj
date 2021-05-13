@@ -54,8 +54,14 @@
     <Compile Include="Constants\CffKeywords.cs" />
     <Compile Include="Constants\Symbols.cs" />
     <Compile Include="FileManipulation\CffLimits.cs" />
+    <Compile Include="FileManipulation\CffLocalCommunication.cs" />
     <Compile Include="FileManipulation\CffLogFile.cs" />
+    <Compile Include="FileManipulation\CffProcessor.cs" />
+    <Compile Include="FileManipulation\CffProcessors.cs" />
+    <Compile Include="FileManipulation\CffProcessorType.cs" />
+    <Compile Include="FileManipulation\CffProcessorTypes.cs" />
     <Compile Include="FileManipulation\CffProgram.cs" />
+    <Compile Include="FileManipulation\CffRemoteCommunication.cs" />
     <Compile Include="FileManipulation\CffTask.cs" />
     <Compile Include="FileManipulation\CffTasks.cs" />
     <Compile Include="FileManipulation\Extractor.cs" />

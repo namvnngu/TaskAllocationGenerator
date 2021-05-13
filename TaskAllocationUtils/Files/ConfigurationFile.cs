@@ -47,6 +47,10 @@ namespace TaskAllocationUtils.Files
             CffLimits cffLimits = new CffLimits();
             CffProgram cffProgram = new CffProgram();
             CffTasks cffTasks = new CffTasks();
+            CffProcessorTypes cffProcessorTypes = new CffProcessorTypes();
+            CffProcessors cffProcessors = new CffProcessors();
+            CffLocalCommunication cffLocalCommunication = new CffLocalCommunication();
+            CffRemoteCommunication cffRemoteCommunication = new CffRemoteCommunication();
             string line;
 
             while (!streamReader.EndOfStream)
@@ -82,11 +86,39 @@ namespace TaskAllocationUtils.Files
                 {
                     Tasks = cffTasks.ExtractTasks(line);
                 }
+
+                // Extract and validate the PROCESSORS section
+                // If the PROCESSORS sections is already visited, then ignore
+                if (!cffProcessors.ProcessorsSection.ValidSectionPair[1])
+                {
+                    Processors = cffProcessors.ExtractProcessors(line);
+                }
+
+                // Extract and validate the PROCESSOR-TYPES section
+                // If the PROCESSOR-TYPES sections is already visited, then ignore
+                if (!cffProcessorTypes.ProcessorTypesSection.ValidSectionPair[1])
+                {
+                    ProcessorTypes = cffProcessorTypes.ExtractProcessorTypes(line);
+                }
+
+                // Extract and validate the LOCAL-COMMUNICATION section
+                // If the LOCAL-COMMUNICATION sections is already visited, then ignore
+                if (!cffLocalCommunication.LocalCommunicationSection.ValidSectionPair[1])
+                {
+                    LocalCommunicationInfo = cffLocalCommunication.ExtractLocalCommunication(line, Program.Tasks);
+                }
+
+                // Extract and validate the REMOTE-COMMUNICATION section
+                // If the REMOTE-COMMUNICATION sections is already visited, then ignore
+                if (!cffRemoteCommunication.RemoteCommunicationSection.ValidSectionPair[1])
+                {
+                    RemoteCommunicationInfo = cffRemoteCommunication.ExtractRemoteCommunication(line, Program.Tasks);
+                }
             }
 
-            foreach(var task in Tasks)
+            foreach(var processor in Processors)
             {
-                Console.WriteLine(task);
+                Console.WriteLine(processor);
             }
 
             streamReader.Close();
