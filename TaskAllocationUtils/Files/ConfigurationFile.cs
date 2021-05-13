@@ -116,11 +116,6 @@ namespace TaskAllocationUtils.Files
                 }
             }
 
-            foreach(var processor in Processors)
-            {
-                Console.WriteLine(processor);
-            }
-
             streamReader.Close();
         }
     }
