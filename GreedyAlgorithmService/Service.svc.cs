@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using TaskAllocationUtils.Files;
 
 namespace GreedyAlgorithmService
 {
@@ -12,22 +13,11 @@ namespace GreedyAlgorithmService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service : IService
     {
-        public string GetData(int value)
+        public string FindAllocations(ConfigurationFile configurationFile)
         {
-            return string.Format("You entered: {0}", value);
-        }
+            string limits = configurationFile.LimitData.ToString();
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return limits;
         }
     }
 }

@@ -116,7 +116,31 @@ namespace TaskAllocationUtils.Files
                 }
             }
 
+            // Assign the corresponding Processor Type object to Processor
+            AssignProcessType();
+
             streamReader.Close();
+        }
+
+        /// <summary>
+        /// The method assigns process types to appropriate,
+        /// corresponding processors.
+        /// </summary>
+        private void AssignProcessType()
+        {
+            if (ProcessorTypes.Count != 0 && Processors.Count != 0)
+            {
+                foreach (Processor processor in Processors)
+                {
+                    foreach (ProcessorType processorType in ProcessorTypes)
+                    {
+                        if (processor.Type == processorType.Name)
+                        {
+                            processor.PType = processorType;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -14,6 +14,10 @@ namespace TaskAllocationGenerator
 {
     public partial class TaskAllocationForm : Form
     {
+        // AutoResetEvent for waiting
+        System.Threading.AutoResetEvent autoResetEvent = new System.Threading.AutoResetEvent(false);
+
+
         public TaskAllocationForm()
         {
             InitializeComponent();
@@ -32,8 +36,15 @@ namespace TaskAllocationGenerator
 
         private void GeneratorButtonClick(object sender, EventArgs e)
         {
+            // Pre process
             ConfigurationFile configurationFile = new ConfigurationFile(urlTextBox.Text);
+
+            // In Process
+            webBrowser.DocumentText = "Finding the optimal task allocations is in process...";
+
             configurationFile.ReadAndExtractData();
+
+            // Post process
         }
     }
 }

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Allocation.cs" />
+    <Compile Include="Classes\AllocationProcessor.cs" />
     <Compile Include="Classes\Communication.cs" />
     <Compile Include="Classes\Limits.cs" />
     <Compile Include="Classes\LocalCommunication.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Classes\ProgramInfo.cs" />
     <Compile Include="Classes\RemoteCommunication.cs" />
     <Compile Include="Classes\Task.cs" />
+    <Compile Include="Constants\AsyncCall.cs" />
     <Compile Include="Constants\CffKeywords.cs" />
     <Compile Include="Constants\Symbols.cs" />
     <Compile Include="FileManipulation\CffLimits.cs" />

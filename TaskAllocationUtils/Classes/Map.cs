@@ -10,6 +10,7 @@ namespace TaskAllocationUtils.Classes
     public class Map
     {
         public string Data { get; set; }
+        public string[,] Matrix { get; set; }
 
         public Map(string data)
         {
@@ -46,6 +47,8 @@ namespace TaskAllocationUtils.Classes
                     matrixData[rowNumber, colNumber] = cols[colNumber];
                 }
             }
+
+            Matrix = matrixData;
 
             return matrixData;
         }
