@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
+
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffProcessors
     {
+        [DataMember]
         public PairSection ProcessorsSection { get; set; }
+        [DataMember]
         public List<Processor> Processors { get; set; }
+        [DataMember]
         public CffProcessor CffProcessorkExtraction { get; set; }
 
         public CffProcessors()

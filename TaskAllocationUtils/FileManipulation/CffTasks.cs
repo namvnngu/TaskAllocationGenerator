@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffTasks
     {
+        [DataMember]
         public PairSection TasksSection { get; set; }
+        [DataMember]
         public List<Task> Tasks { get; set; }
+        [DataMember]
         public CffTask CffTaskExtraction { get; set; }
 
         public CffTasks()

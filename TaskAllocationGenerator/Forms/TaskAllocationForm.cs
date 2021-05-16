@@ -39,10 +39,12 @@ namespace TaskAllocationGenerator
             // Pre process
             ConfigurationFile configurationFile = new ConfigurationFile(urlTextBox.Text);
 
+
             // In Process
             webBrowser.DocumentText = "Finding the optimal task allocations is in process...";
 
             configurationFile.ReadAndExtractData();
+            Console.WriteLine(configurationFile.LocalCommunicationInfo);
 
             // Post process
         }

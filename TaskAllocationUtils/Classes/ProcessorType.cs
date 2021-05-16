@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class ProcessorType
     {
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
         public double C0 { get; set; }
+        [DataMember]
         public double C1 { get; set; }
+        [DataMember]
         public double C2 { get; set; }
 
         public ProcessorType()

@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class PairSection
     {
+        [DataMember]
         public bool[] ValidSectionPair { get; set; }
+        [DataMember]
         public string OpeningSection { get; set; }
+        [DataMember]
         public string ClosingSection { get; set; }
 
         public PairSection(string openingSection, string closingSection)

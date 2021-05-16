@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffLimits
     {
+        [DataMember]
         public Limits LimitData { get; set; }
+        [DataMember]
         public PairSection LimitPairSection { get; set; }
 
         public CffLimits()

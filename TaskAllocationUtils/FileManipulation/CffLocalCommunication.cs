@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffLocalCommunication
     {
+        [DataMember]
         public LocalCommunication LocalCommunication { get; set; }
+        [DataMember]
         public PairSection LocalCommunicationSection { get; set; }
 
         public CffLocalCommunication()

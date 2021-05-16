@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
@@ -10,10 +11,13 @@ namespace TaskAllocationUtils.Classes
     /// The superclass Commnucation allows subclasses
     /// to inherit and define their own behaviours.
     /// </summary>
+    [DataContract]
     public class Communication
     {
+        [DataMember]
         public Map MapData { get; set; }
-        public string[,] MapMatrix { get; set; }
+        [DataMember]
+        public List<List<string>> MapMatrix { get; set; }
 
         public Communication()
         {
@@ -35,14 +39,14 @@ namespace TaskAllocationUtils.Classes
             }
 
             StringBuilder displayedMap = new StringBuilder();
-            int nRow = MapMatrix.GetLength(0);
-            int nCol = MapMatrix.GetLength(1);
+            int nRow = MapMatrix.Count;
+            int nCol = MapMatrix[0].Count;
 
             for (int row = 0; row < nRow; row++)
             {
                 for (int col = 0; col < nCol; col++)
                 {
-                    displayedMap.Append(MapMatrix[row, col] + " | ");
+                    displayedMap.Append(MapMatrix[row][col] + " | ");
                 }
                 displayedMap.Append('\n');
             }

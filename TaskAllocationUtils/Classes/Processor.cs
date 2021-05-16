@@ -4,17 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class Processor
     {
+        [DataMember]
         public int ID { set; get; }
+        [DataMember]
         public string Type { get; set; }
+        [DataMember]
         public ProcessorType PType { get; set; }
+        [DataMember]
         public double Frequency { get; set; }
+        [DataMember]
         public int RAM { get; set; }
+        [DataMember]
         public int Download { get; set; }
+        [DataMember]
         public int Upload { get; set; }
 
         public Processor()

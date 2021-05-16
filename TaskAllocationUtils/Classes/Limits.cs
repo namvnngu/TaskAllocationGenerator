@@ -4,22 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class Limits
     {
+        [DataMember]
         public int MinimumTasks { get; set; }
+        [DataMember]
         public int MaximumTasks { get; set; }
+        [DataMember]
         public int MinimumProcessors { get; set; }
+        [DataMember]
         public int MaximumProcessors { get; set; }
+        [DataMember]
         public double MinimumProcessorsFrequencies { get; set; }
+        [DataMember]
         public double MaximumProcessorsFrequencies { get; set; }
+        [DataMember]
         public int MinimumRAM { get; set; }
+        [DataMember]
         public int MaximumRAM { get; set; }
+        [DataMember]
         public int MinimumDownload { get; set; }
+        [DataMember]
         public int MaximumDownload { get; set; }
+        [DataMember]
         public int MinimumUpload { get; set; }
+        [DataMember]
         public int MaximumUpload { get; set; }
 
         public Limits()

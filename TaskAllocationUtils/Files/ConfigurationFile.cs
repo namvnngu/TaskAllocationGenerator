@@ -7,19 +7,30 @@ using System.IO;
 using System.Net;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.FileManipulation;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Files
 {
+    [DataContract]
     public class ConfigurationFile
     {
+        [DataMember]
         public string Source { get; set; }
+        [DataMember]
         public string LogFilename { get; set; }
+        [DataMember]
         public Limits LimitData { get; set; }
+        [DataMember]
         public ProgramInfo Program { get; set; }
+        [DataMember]
         public List<Classes.Task> Tasks { get; set; }
+        [DataMember]
         public List<Processor> Processors { get; set; }
+        [DataMember]
         public List<ProcessorType> ProcessorTypes { get; set; }
+        [DataMember]
         public LocalCommunication LocalCommunicationInfo { get; set; }
+        [DataMember]
         public RemoteCommunication RemoteCommunicationInfo { get; set; }
 
         public ConfigurationFile()

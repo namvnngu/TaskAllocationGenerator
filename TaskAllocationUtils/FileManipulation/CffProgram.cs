@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffProgram
     {
+        [DataMember]
         public ProgramInfo Program { get; set; }
+        [DataMember]
         public PairSection ProgramPairSection { get; set; }
 
         public CffProgram()

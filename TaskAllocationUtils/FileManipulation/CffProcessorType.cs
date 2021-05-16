@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffProcessorType
     {
+        [DataMember]
         public ProcessorType ProcessorTypeInfo { get; set; }
+        [DataMember]
         public bool InsideProcessorType { get; set; }
 
         public CffProcessorType()

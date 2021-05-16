@@ -5,13 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Constants;
 using TaskAllocationUtils.Classes;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.FileManipulation
 {
+    [DataContract]
     public class CffLogFile
     {
+        [DataMember]
         public PairSection LogFileSection { get; set; }
+        [DataMember]
         public string LogFile { get; set; }
+        [DataMember]
         public string LOGFILE_EXTENSION = "txt";
 
         public CffLogFile()

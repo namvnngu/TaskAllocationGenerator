@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TaskAllocationUtils.Classes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TaskAllocationUtils.Classes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49779/Service.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Limits">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaximumDownload" type="xs:int" />
+      <xs:element minOccurs="0" name="MaximumProcessors" type="xs:int" />
+      <xs:element minOccurs="0" name="MaximumProcessorsFrequencies" type="xs:double" />
+      <xs:element minOccurs="0" name="MaximumRAM" type="xs:int" />
+      <xs:element minOccurs="0" name="MaximumTasks" type="xs:int" />
+      <xs:element minOccurs="0" name="MaximumUpload" type="xs:int" />
+      <xs:element minOccurs="0" name="MinimumDownload" type="xs:int" />
+      <xs:element minOccurs="0" name="MinimumProcessors" type="xs:int" />
+      <xs:element minOccurs="0" name="MinimumProcessorsFrequencies" type="xs:double" />
+      <xs:element minOccurs="0" name="MinimumRAM" type="xs:int" />
+      <xs:element minOccurs="0" name="MinimumTasks" type="xs:int" />
+      <xs:element minOccurs="0" name="MinimumUpload" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Limits" nillable="true" type="tns:Limits" />
+  <xs:complexType name="LocalCommunication">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Communication">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalCommunication" nillable="true" type="tns:LocalCommunication" />
+  <xs:complexType name="Communication">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MapData" nillable="true" type="tns:Map" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MapMatrix" nillable="true" type="q1:ArrayOfArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Communication" nillable="true" type="tns:Communication" />
+  <xs:complexType name="Map">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Matrix" nillable="true" type="q2:ArrayOfArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Map" nillable="true" type="tns:Map" />
+  <xs:complexType name="ArrayOfProcessorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProcessorType" nillable="true" type="tns:ProcessorType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProcessorType" nillable="true" type="tns:ArrayOfProcessorType" />
+  <xs:complexType name="ProcessorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="C0" type="xs:double" />
+      <xs:element minOccurs="0" name="C1" type="xs:double" />
+      <xs:element minOccurs="0" name="C2" type="xs:double" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessorType" nillable="true" type="tns:ProcessorType" />
+  <xs:complexType name="ArrayOfProcessor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Processor" nillable="true" type="tns:Processor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProcessor" nillable="true" type="tns:ArrayOfProcessor" />
+  <xs:complexType name="Processor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Download" type="xs:int" />
+      <xs:element minOccurs="0" name="Frequency" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="PType" nillable="true" type="tns:ProcessorType" />
+      <xs:element minOccurs="0" name="RAM" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Upload" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Processor" nillable="true" type="tns:Processor" />
+  <xs:complexType name="ProgramInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Duration" type="xs:double" />
+      <xs:element minOccurs="0" name="Processors" type="xs:int" />
+      <xs:element minOccurs="0" name="Tasks" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProgramInfo" nillable="true" type="tns:ProgramInfo" />
+  <xs:complexType name="RemoteCommunication">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Communication">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoteCommunication" nillable="true" type="tns:RemoteCommunication" />
+  <xs:complexType name="ArrayOfTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTask" nillable="true" type="tns:ArrayOfTask" />
+  <xs:complexType name="Task">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Download" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="RAM" type="xs:int" />
+      <xs:element minOccurs="0" name="ReferenceFrequency" type="xs:double" />
+      <xs:element minOccurs="0" name="Runtime" type="xs:double" />
+      <xs:element minOccurs="0" name="Upload" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Task" nillable="true" type="tns:Task" />
+</xs:schema>

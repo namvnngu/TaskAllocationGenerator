@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
+
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class Task
     {
+        [DataMember]
         public int ID { get; set; }
+        [DataMember]
         public double Runtime { get; set; }
+        [DataMember]
         public double ReferenceFrequency { get; set; }
+        [DataMember]
         public int RAM { get; set; }
+        [DataMember]
         public int Download { get; set; }
+        [DataMember]
         public int Upload { get; set; }
 
         public Task()

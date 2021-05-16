@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class Allocation
     {
         // Allocation = Allocation + AllocationDisplay
+        [DataMember]
         public int ID { get; set; }
+        [DataMember]
         public double Runtime { get; set; }
+        [DataMember]
         public double Energy { get; set; }
+        [DataMember]
         public string[,] MapMatrix { get; set; }
+        [DataMember]
         public List<ProcessorAllocation> ProcessorAllocations { get; set; }
 
         public Allocation()

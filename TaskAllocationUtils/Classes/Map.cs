@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
+    [DataContract]
     public class Map
     {
+        [DataMember]
         public string Data { get; set; }
-        public string[,] Matrix { get; set; }
+        [DataMember]
+        public List<List<string>> Matrix { get; set; }
 
         public Map(string data)
         {
@@ -27,14 +31,14 @@ namespace TaskAllocationUtils.Classes
         /// <param name="nCol"></param>
         /// <param name="validations"></param>
         /// <returns></returns>
-        public string[,] ConvertToMatrix(int nRow, int nCol)
+        public List<List<string>> ConvertToMatrix(int nRow, int nCol)
         {
             if (nRow < 0 || nCol < 0)
             {
                 return null;
             }
 
-            string[,] matrixData = new string[nRow, nCol];
+            List<List<string>> matrixData = new List<List<string>>();
             string[] rows = Data.Split(Symbols.SEMI_COLON);
 
             for (int rowNumber = 0; rowNumber < rows.Length; rowNumber++)
@@ -42,9 +46,11 @@ namespace TaskAllocationUtils.Classes
                 string row = rows[rowNumber];
                 string[] cols = row.Split(Symbols.COMMA);
 
+                matrixData.Add(new List<string>(new string[cols.Length]));
+
                 for (int colNumber = 0; colNumber < cols.Length; colNumber++)
                 {
-                    matrixData[rowNumber, colNumber] = cols[colNumber];
+                    matrixData[rowNumber][colNumber] = cols[colNumber];
                 }
             }
 

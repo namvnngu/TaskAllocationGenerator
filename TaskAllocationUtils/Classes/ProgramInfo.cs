@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Constants;
+using System.Runtime.Serialization;
 
 namespace TaskAllocationUtils.Classes
 {
@@ -11,10 +12,14 @@ namespace TaskAllocationUtils.Classes
     /// The class provides the number of tasks,
     /// the number of processors and the maximum duration
     /// </summary>
+    [DataContract]
     public class ProgramInfo
     {
+        [DataMember]
         public double Duration { get; set; }
+        [DataMember]
         public int Tasks { get; set; }
+        [DataMember]
         public int Processors { get; set; }
 
         public ProgramInfo()
