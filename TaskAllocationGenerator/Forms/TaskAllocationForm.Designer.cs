@@ -152,7 +152,9 @@ namespace TaskAllocationGenerator
             this.urlComboBox.Items.AddRange(new object[] {
             "https://sit323.blob.core.windows.net/pt2/PT2 - Test1.cff",
             "https://sit323.blob.core.windows.net/pt2/PT2 - Test2.cff",
-            "https://sit323.blob.core.windows.net/pt2/PT2 - Test3.cff"});
+            "https://sit323.blob.core.windows.net/pt2/PT2 - Test3.cff",
+            "https://sit323.blob.core.windows.net/pt2/Intermediate.cff",
+            "https://sit323.blob.core.windows.net/pt2/Hardcore.cff"});
             this.urlComboBox.Location = new System.Drawing.Point(6, 24);
             this.urlComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.urlComboBox.Name = "urlComboBox";
