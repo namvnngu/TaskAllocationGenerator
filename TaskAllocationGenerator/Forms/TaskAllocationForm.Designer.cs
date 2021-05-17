@@ -39,9 +39,9 @@ namespace TaskAllocationGenerator
             this.errorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.urlTextBox = new System.Windows.Forms.TextBox();
             this.generatorButton = new System.Windows.Forms.Button();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.urlComboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,20 +125,10 @@ namespace TaskAllocationGenerator
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
-            // urlTextBox
-            // 
-            this.urlTextBox.Location = new System.Drawing.Point(6, 24);
-            this.urlTextBox.Margin = new System.Windows.Forms.Padding(0);
-            this.urlTextBox.Multiline = true;
-            this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(284, 22);
-            this.urlTextBox.TabIndex = 1;
-            this.urlTextBox.Text = "https://sit323.blob.core.windows.net/pt2/PT2 - Test1.cff";
-            // 
             // generatorButton
             // 
-            this.generatorButton.Location = new System.Drawing.Point(290, 24);
-            this.generatorButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.generatorButton.Location = new System.Drawing.Point(309, 23);
+            this.generatorButton.Margin = new System.Windows.Forms.Padding(0);
             this.generatorButton.Name = "generatorButton";
             this.generatorButton.Size = new System.Drawing.Size(114, 23);
             this.generatorButton.TabIndex = 2;
@@ -150,23 +140,37 @@ namespace TaskAllocationGenerator
             // 
             this.webBrowser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.webBrowser.Location = new System.Drawing.Point(0, 46);
-            this.webBrowser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(2);
             this.webBrowser.MinimumSize = new System.Drawing.Size(10, 10);
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(582, 291);
             this.webBrowser.TabIndex = 3;
+            // 
+            // urlComboBox
+            // 
+            this.urlComboBox.FormattingEnabled = true;
+            this.urlComboBox.Items.AddRange(new object[] {
+            "https://sit323.blob.core.windows.net/pt2/PT2 - Test1.cff",
+            "https://sit323.blob.core.windows.net/pt2/PT2 - Test2.cff",
+            "https://sit323.blob.core.windows.net/pt2/PT2 - Test3.cff"});
+            this.urlComboBox.Location = new System.Drawing.Point(6, 24);
+            this.urlComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.urlComboBox.Name = "urlComboBox";
+            this.urlComboBox.Size = new System.Drawing.Size(304, 21);
+            this.urlComboBox.TabIndex = 4;
+            this.urlComboBox.Text = "https://sit323.blob.core.windows.net/pt2/PT2 - Test1.cff";
             // 
             // TaskAllocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 337);
+            this.Controls.Add(this.urlComboBox);
             this.Controls.Add(this.generatorButton);
-            this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.webBrowser);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TaskAllocationForm";
             this.Text = "Task Allocation Generator";
             this.menuStrip.ResumeLayout(false);
@@ -188,9 +192,9 @@ namespace TaskAllocationGenerator
         private System.Windows.Forms.ToolStripMenuItem errorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.Button generatorButton;
         private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.ComboBox urlComboBox;
     }
 }
 

@@ -37,14 +37,14 @@ namespace TaskAllocationGenerator
         private void GeneratorButtonClick(object sender, EventArgs e)
         {
             // Pre process
-            ConfigurationFile configurationFile = new ConfigurationFile(urlTextBox.Text);
+            ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
 
 
             // In Process
             webBrowser.DocumentText = "Finding the optimal task allocations is in process...";
 
             configurationFile.ReadAndExtractData();
-            Console.WriteLine(configurationFile.LocalCommunicationInfo);
+            Console.WriteLine(configurationFile.Program);
 
             // Post process
         }
