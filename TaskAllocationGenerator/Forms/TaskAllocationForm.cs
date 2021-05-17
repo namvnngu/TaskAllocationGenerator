@@ -5,10 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskAllocationGenerator.Forms;
 using TaskAllocationUtils.Files;
+using TaskAllocationUtils.Constants;
+using TaskAllocationGenerator.Utils.Asynchronous;
 
 namespace TaskAllocationGenerator
 {
@@ -16,6 +17,7 @@ namespace TaskAllocationGenerator
     {
         // AutoResetEvent for waiting
         System.Threading.AutoResetEvent autoResetEvent = new System.Threading.AutoResetEvent(false);
+        readonly object ALock = new object();
 
 
         public TaskAllocationForm()
@@ -34,19 +36,41 @@ namespace TaskAllocationGenerator
             aboutBox.ShowDialog();
         }
 
-        private void GeneratorButtonClick(object sender, EventArgs e)
+        private async void GeneratorButtonClick(object sender, EventArgs e)
         {
-            // Pre process
+            /// Pre Process
             ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
+            AsyncHandler asyncHandler = new AsyncHandler();
+            System.Threading.SynchronizationContext syncContext = System.Threading.SynchronizationContext.Current;
 
-
-            // In Process
+            /// In Process
             webBrowser.DocumentText = "Finding the optimal task allocations is in process...";
 
-            configurationFile.ReadAndExtractData();
-            Console.WriteLine(configurationFile.Program);
+            asyncHandler.Configuration = configurationFile.ReadAndExtractData();
+            asyncHandler.AutoResetEvent = autoResetEvent;
 
-            // Post process
+            // Create 2nd thread
+            await System.Threading.Tasks.Task.Run(() => asyncHandler.SendAsyncRequests());
+
+            // GUI thread waits
+            autoResetEvent.WaitOne(AsyncCall.TIMEOUT_LIMIT);
+
+            /// Post Process
+            // Process all results that return within 5 mins
+            string text = "";
+
+            lock (ALock)
+            {
+                List<string> results = asyncHandler.Results;
+                foreach (string result in results)
+                {
+                    text += result + Environment.NewLine;
+                    Console.WriteLine(result);
+                }
+
+            }
+
+            webBrowser.DocumentText = text;
         }
     }
 }

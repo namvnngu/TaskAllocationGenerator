@@ -18,8 +18,10 @@ namespace TaskAllocationGenerator.GreedyAlgorithmService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindAllocations", ReplyAction="http://tempuri.org/IService/FindAllocationsResponse")]
         string FindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindAllocations", ReplyAction="http://tempuri.org/IService/FindAllocationsResponse")]
-        System.Threading.Tasks.Task<string> FindAllocationsAsync(TaskAllocationUtils.Files.ConfigurationFile configurationFile);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/FindAllocations", ReplyAction="http://tempuri.org/IService/FindAllocationsResponse")]
+        System.IAsyncResult BeginFindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile, System.AsyncCallback callback, object asyncState);
+        
+        string EndFindAllocations(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -28,7 +30,32 @@ namespace TaskAllocationGenerator.GreedyAlgorithmService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class FindAllocationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public FindAllocationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceClient : System.ServiceModel.ClientBase<TaskAllocationGenerator.GreedyAlgorithmService.IService>, TaskAllocationGenerator.GreedyAlgorithmService.IService {
+        
+        private BeginOperationDelegate onBeginFindAllocationsDelegate;
+        
+        private EndOperationDelegate onEndFindAllocationsDelegate;
+        
+        private System.Threading.SendOrPostCallback onFindAllocationsCompletedDelegate;
         
         public ServiceClient() {
         }
@@ -49,12 +76,56 @@ namespace TaskAllocationGenerator.GreedyAlgorithmService {
                 base(binding, remoteAddress) {
         }
         
+        public event System.EventHandler<FindAllocationsCompletedEventArgs> FindAllocationsCompleted;
+        
         public string FindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile) {
             return base.Channel.FindAllocations(configurationFile);
         }
         
-        public System.Threading.Tasks.Task<string> FindAllocationsAsync(TaskAllocationUtils.Files.ConfigurationFile configurationFile) {
-            return base.Channel.FindAllocationsAsync(configurationFile);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginFindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginFindAllocations(configurationFile, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndFindAllocations(System.IAsyncResult result) {
+            return base.Channel.EndFindAllocations(result);
+        }
+        
+        private System.IAsyncResult OnBeginFindAllocations(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            TaskAllocationUtils.Files.ConfigurationFile configurationFile = ((TaskAllocationUtils.Files.ConfigurationFile)(inValues[0]));
+            return this.BeginFindAllocations(configurationFile, callback, asyncState);
+        }
+        
+        private object[] OnEndFindAllocations(System.IAsyncResult result) {
+            string retVal = this.EndFindAllocations(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnFindAllocationsCompleted(object state) {
+            if ((this.FindAllocationsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.FindAllocationsCompleted(this, new FindAllocationsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void FindAllocationsAsync(TaskAllocationUtils.Files.ConfigurationFile configurationFile) {
+            this.FindAllocationsAsync(configurationFile, null);
+        }
+        
+        public void FindAllocationsAsync(TaskAllocationUtils.Files.ConfigurationFile configurationFile, object userState) {
+            if ((this.onBeginFindAllocationsDelegate == null)) {
+                this.onBeginFindAllocationsDelegate = new BeginOperationDelegate(this.OnBeginFindAllocations);
+            }
+            if ((this.onEndFindAllocationsDelegate == null)) {
+                this.onEndFindAllocationsDelegate = new EndOperationDelegate(this.OnEndFindAllocations);
+            }
+            if ((this.onFindAllocationsCompletedDelegate == null)) {
+                this.onFindAllocationsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnFindAllocationsCompleted);
+            }
+            base.InvokeAsync(this.onBeginFindAllocationsDelegate, new object[] {
+                        configurationFile}, this.onEndFindAllocationsDelegate, this.onFindAllocationsCompletedDelegate, userState);
         }
     }
 }

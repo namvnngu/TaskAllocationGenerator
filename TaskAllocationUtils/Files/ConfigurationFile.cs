@@ -44,11 +44,11 @@ namespace TaskAllocationUtils.Files
             Source = source;
         }
 
-        public void ReadAndExtractData()
+        public ConfigurationFile ReadAndExtractData()
         {
             if (Source == null)
             {
-                return;
+                return null;
             }
 
             WebClient webClient = new WebClient();
@@ -131,6 +131,8 @@ namespace TaskAllocationUtils.Files
             AssignProcessType();
 
             streamReader.Close();
+
+            return this;
         }
 
         /// <summary>

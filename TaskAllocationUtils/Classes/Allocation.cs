@@ -18,7 +18,7 @@ namespace TaskAllocationUtils.Classes
         [DataMember]
         public double Energy { get; set; }
         [DataMember]
-        public string[,] MapMatrix { get; set; }
+        public List<List<string>> MapMatrix { get; set; }
         [DataMember]
         public List<ProcessorAllocation> ProcessorAllocations { get; set; }
 
