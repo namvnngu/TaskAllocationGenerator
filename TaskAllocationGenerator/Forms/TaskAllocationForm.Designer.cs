@@ -56,7 +56,7 @@ namespace TaskAllocationGenerator
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip.Size = new System.Drawing.Size(582, 24);
+            this.menuStrip.Size = new System.Drawing.Size(650, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -139,11 +139,11 @@ namespace TaskAllocationGenerator
             // webBrowser
             // 
             this.webBrowser.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.webBrowser.Location = new System.Drawing.Point(0, 46);
+            this.webBrowser.Location = new System.Drawing.Point(0, 48);
             this.webBrowser.Margin = new System.Windows.Forms.Padding(2);
             this.webBrowser.MinimumSize = new System.Drawing.Size(10, 10);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(582, 291);
+            this.webBrowser.Size = new System.Drawing.Size(650, 329);
             this.webBrowser.TabIndex = 3;
             // 
             // urlComboBox
@@ -166,7 +166,7 @@ namespace TaskAllocationGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 337);
+            this.ClientSize = new System.Drawing.Size(650, 377);
             this.Controls.Add(this.urlComboBox);
             this.Controls.Add(this.generatorButton);
             this.Controls.Add(this.menuStrip);
@@ -174,6 +174,7 @@ namespace TaskAllocationGenerator
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TaskAllocationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task Allocation Generator";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

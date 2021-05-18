@@ -10,6 +10,7 @@ using TaskAllocationGenerator.Forms;
 using TaskAllocationUtils.Files;
 using TaskAllocationUtils.Constants;
 using TaskAllocationGenerator.Utils.Asynchronous;
+using TaskAllocationGenerator.Utils.Allocations;
 
 namespace TaskAllocationGenerator
 {
@@ -36,8 +37,9 @@ namespace TaskAllocationGenerator
             aboutBox.ShowDialog();
         }
 
-        private async void GeneratorButtonClick(object sender, EventArgs e)
+        private void GeneratorButtonClick(object sender, EventArgs e)
         {
+            /*
             /// Pre Process
             ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
             AsyncHandler asyncHandler = new AsyncHandler();
@@ -71,6 +73,12 @@ namespace TaskAllocationGenerator
             }
 
             webBrowser.DocumentText = text;
+            */
+
+            ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
+            configurationFile.ReadAndExtractData();
+            AllocationFinder allocationFinder = new AllocationFinder(configurationFile);
+            webBrowser.DocumentText = allocationFinder.Run();
         }
     }
 }
