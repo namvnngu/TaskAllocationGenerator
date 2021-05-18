@@ -20,7 +20,7 @@ namespace TaskAllocationUtils.Classes
         [DataMember]
         public List<List<string>> MapMatrix { get; set; }
         [DataMember]
-        public List<ProcessorAllocation> ProcessorAllocations { get; set; }
+        public List<AllocationProcessor> ProcessorAllocations { get; set; }
 
         public Allocation()
         {
@@ -35,7 +35,7 @@ namespace TaskAllocationUtils.Classes
             text.AppendLine($"Runtime={Runtime}");
             text.AppendLine($"Energy={Energy}");
 
-            foreach (ProcessorAllocation processorAllocation in ProcessorAllocations)
+            foreach (AllocationProcessor processorAllocation in ProcessorAllocations)
             {
                 text.AppendLine($"{processorAllocation.Allocation} | RAM={processorAllocation.RAM} | " +
                     $"Upload={processorAllocation.Upload} | Donwload={processorAllocation.Download}");

@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Allocations\AllocationCalculator.cs" />
+    <Compile Include="Allocations\AllocationValidator.cs" />
     <Compile Include="Classes\Allocation.cs" />
     <Compile Include="Classes\AllocationProcessor.cs" />
     <Compile Include="Classes\Communication.cs" />

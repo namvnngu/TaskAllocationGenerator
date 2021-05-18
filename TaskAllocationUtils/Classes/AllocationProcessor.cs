@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace TaskAllocationUtils.Classes
 {
     [DataContract]
-    public class ProcessorAllocation
+    public class AllocationProcessor
     {
         [DataMember]
         public string Allocation;
@@ -19,7 +19,7 @@ namespace TaskAllocationUtils.Classes
         [DataMember]
         public int Download;
 
-        public ProcessorAllocation()
+        public AllocationProcessor()
         {
             Allocation = null;
             RAM = 0;
@@ -27,7 +27,7 @@ namespace TaskAllocationUtils.Classes
             Download = 0;
         }
 
-        public ProcessorAllocation(string allocation, int ram, int upload, int download)
+        public AllocationProcessor(string allocation, int ram, int upload, int download)
         {
             Allocation = allocation;
             RAM = ram;
