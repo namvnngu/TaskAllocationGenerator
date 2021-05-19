@@ -35,66 +35,34 @@ namespace TaskAllocationGenerator.Utils.Allocations
             // Initalize essentials for a allocation map
             int[] usedTasks = new int[numOfTasks];
             allocationMap = InitalizeMap(numOfTasks, numOfProcessors);
-            double allocationEnergy = 0.0;
-            double[] allocationRuntime = new double[numOfProcessors];
+            bool validAllocation = false;
+            Random rnd = new Random();
 
-            for (int taskNum = 0; taskNum < numOfTasks; taskNum++)
+            while (!validAllocation)
             {
-                Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
-                Dictionary<int, double> taskRuntimeInProcessorDict = new Dictionary<int, double>();
-                Task task = Configuration.Tasks[taskNum];
-                int taskRAM = task.RAM;
-                int taskDownload = task.Download;
-                int taskUpload = task.Upload;
-                bool found = false;
-
-                for (int processNum = 0; processNum < numOfProcessors; processNum++)
+                double allocationEnergy = 0.0;
+                double[] allocationRuntime = new double[numOfProcessors];
+                for (int taskNum = 0; taskNum < numOfTasks; taskNum++)
                 {
-                    double currentTaskEnergy = tasksEnergy[processNum, taskNum];
-                    double currentTaskRuntime = tasksRuntimes[processNum, taskNum];
+                    Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
+                    Dictionary<int, double> taskRuntimeInProcessorDict = new Dictionary<int, double>();
+                    Task task = Configuration.Tasks[taskNum];
+                    int taskRAM = task.RAM;
+                    int taskDownload = task.Download;
+                    int taskUpload = task.Upload;
 
-                    taskEnergyInProcessorDict.Add(processNum, currentTaskEnergy);
-                    taskRuntimeInProcessorDict.Add(processNum, currentTaskRuntime);
-                }
-
-                taskRuntimeInProcessorDict = taskRuntimeInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-                taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-                /*for (int index = 0; index < numOfProcessors; index++)
-                {
-                    KeyValuePair<int, double> energyElement = taskEnergyInProcessorDict.ElementAt(index);
-                    KeyValuePair<int, double> runtimeElement = taskRuntimeInProcessorDict.ElementAt(index);
-
-                    if (energyElement.Key == runtimeElement.Key)
+                    for (int processNum = 0; processNum < numOfProcessors; processNum++)
                     {
-                        double currentTaskEnery = taskEnergyInProcessorDict.ElementAt(index).Value;
-                        double currentTaskRuntime = taskRuntimeInProcessorDict.ElementAt(index).Value;
-                        int processorID = energyElement.Key;
-                        Processor processor = Configuration.Processors[processorID];
-                        int processorRAM = processor.RAM;
-                        int processorDownload = processor.Download;
-                        int processorUpload = processor.Upload;
-                        double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
+                        double currentTaskEnergy = tasksEnergy[processNum, taskNum];
+                        double currentTaskRuntime = tasksRuntimes[processNum, taskNum];
 
-                        if ((taskRAM <= processorRAM) &&
-                            (taskDownload <= processorDownload) &&
-                            (taskUpload <= processorUpload) &&
-                            (currentAllocationRuntime <= duration))
-                        {
-                            allocationMap[processorID][taskNum] = "1";
-                            allocationRuntime[processorID] = currentAllocationRuntime;
-                            allocationEnergy += currentTaskEnery;
-
-                            found = true;
-
-                            break;
-                        }
+                        taskEnergyInProcessorDict.Add(processNum, currentTaskEnergy);
+                        taskRuntimeInProcessorDict.Add(processNum, currentTaskRuntime);
                     }
 
-                }*/
+                    taskRuntimeInProcessorDict = taskRuntimeInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+                    taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-                // if (!found)
-                {
                     foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
                     {
                         int processorID = entry.Key;
@@ -116,20 +84,24 @@ namespace TaskAllocationGenerator.Utils.Allocations
                             usedTasks[taskNum] = processorID;
                             break;
                         }
-
-                        // Console.WriteLine($"Key={entry.Key}, Value={entry.Value} ");
                     }
                 }
+
+                Allocation newAllocation = AllocationCalculator.CalculateAllocationValues(allocationMap, Configuration);
+                if (AllocationValidator.ValidateAllocation(newAllocation, Configuration))
+                {
+                    Console.WriteLine(newAllocation);
+                    validAllocation = true;
+                }
+                /*else
+                {
+                    Console.WriteLine("Invalid");
+                }*/
+
+                Console.WriteLine($"Runtime={allocationRuntime.Max()}, Energy={allocationEnergy}");
+                break;
             }
 
-            Allocation newAllocation = AllocationCalculator.CalculateAllocationValues(allocationMap, Configuration);
-            if (AllocationValidator.ValidateAllocation(newAllocation, Configuration))
-            {
-                Console.WriteLine(newAllocation);
-            } else
-            {
-                Console.WriteLine("Invalid");
-            }
 
             StringBuilder stringBuilder = new StringBuilder();
             for (int processNum = 0; processNum < numOfProcessors; processNum++)
