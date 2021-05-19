@@ -7,15 +7,17 @@ using TaskAllocationUtils.Classes;
 
 namespace TaskAllocationUtils.Allocations
 {
-    class AllocationCalculator
+    public class AllocationCalculator
     {
-        public static void CalculateAllocationValues(List<List<string>> allocationMap, ConfigurationFile configuration)
+        public static Allocation CalculateAllocationValues(List<List<string>> allocationMap, ConfigurationFile configuration)
         {
             Allocation allocation = new Allocation();
             allocation.Runtime = CalculateAllocationRuntime(allocationMap, configuration);
             allocation.Energy = CalculateAllocationEnergy(allocationMap, configuration);
             allocation.MapMatrix = allocationMap;
             allocation.ProcessorAllocations = CalculateProcessorAllocationValues(allocationMap, configuration);
+
+            return allocation;
         }
 
         private static double CalculateAllocationRuntime(List<List<string>> allocationMap, ConfigurationFile configuration)

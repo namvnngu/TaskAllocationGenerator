@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TaskAllocationUtils.Files;
 using TaskAllocationUtils.Classes;
+using TaskAllocationUtils.Allocations;
 
 namespace TaskAllocationGenerator.Utils.Allocations
 {
@@ -59,32 +60,76 @@ namespace TaskAllocationGenerator.Utils.Allocations
                 taskRuntimeInProcessorDict = taskRuntimeInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
                 taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-                foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
+                /*for (int index = 0; index < numOfProcessors; index++)
                 {
-                    int processorID = entry.Key;
-                    Processor processor = Configuration.Processors[processorID];
-                    int processorRAM = processor.RAM;
-                    int processorDownload = processor.Download;
-                    int processorUpload = processor.Upload;
-                    double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
+                    KeyValuePair<int, double> energyElement = taskEnergyInProcessorDict.ElementAt(index);
+                    KeyValuePair<int, double> runtimeElement = taskRuntimeInProcessorDict.ElementAt(index);
 
-                    if ((taskRAM <= processorRAM) &&
-                        (taskDownload <= processorDownload) &&
-                        (taskUpload <= processorUpload) &&
-                        (currentAllocationRuntime <= duration))
+                    if (energyElement.Key == runtimeElement.Key)
                     {
-                        allocationMap[processorID][taskNum] = "1";
-                        allocationRuntime[processorID] = currentAllocationRuntime;
-                        allocationEnergy += tasksEnergy[processorID, taskNum];
+                        double currentTaskEnery = taskEnergyInProcessorDict.ElementAt(index).Value;
+                        double currentTaskRuntime = taskRuntimeInProcessorDict.ElementAt(index).Value;
+                        int processorID = energyElement.Key;
+                        Processor processor = Configuration.Processors[processorID];
+                        int processorRAM = processor.RAM;
+                        int processorDownload = processor.Download;
+                        int processorUpload = processor.Upload;
+                        double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
 
-                        break;
+                        if ((taskRAM <= processorRAM) &&
+                            (taskDownload <= processorDownload) &&
+                            (taskUpload <= processorUpload) &&
+                            (currentAllocationRuntime <= duration))
+                        {
+                            allocationMap[processorID][taskNum] = "1";
+                            allocationRuntime[processorID] = currentAllocationRuntime;
+                            allocationEnergy += currentTaskEnery;
+
+                            found = true;
+
+                            break;
+                        }
                     }
 
-                    // Console.WriteLine($"Key={entry.Key}, Value={entry.Value} ");
+                }*/
+
+                // if (!found)
+                {
+                    foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
+                    {
+                        int processorID = entry.Key;
+                        Processor processor = Configuration.Processors[processorID];
+                        int processorRAM = processor.RAM;
+                        int processorDownload = processor.Download;
+                        int processorUpload = processor.Upload;
+                        double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
+
+                        if ((taskRAM <= processorRAM) &&
+                            (taskDownload <= processorDownload) &&
+                            (taskUpload <= processorUpload) &&
+                            (currentAllocationRuntime <= duration))
+                        {
+                            allocationMap[processorID][taskNum] = "1";
+                            allocationRuntime[processorID] = currentAllocationRuntime;
+                            allocationEnergy += tasksEnergy[processorID, taskNum];
+
+                            usedTasks[taskNum] = processorID;
+                            break;
+                        }
+
+                        // Console.WriteLine($"Key={entry.Key}, Value={entry.Value} ");
+                    }
                 }
             }
 
-            Console.WriteLine($"Runtime={allocationRuntime}, Energy={allocationEnergy}");
+            Allocation newAllocation = AllocationCalculator.CalculateAllocationValues(allocationMap, Configuration);
+            if (AllocationValidator.ValidateAllocation(newAllocation, Configuration))
+            {
+                Console.WriteLine(newAllocation);
+            } else
+            {
+                Console.WriteLine("Invalid");
+            }
 
             StringBuilder stringBuilder = new StringBuilder();
             for (int processNum = 0; processNum < numOfProcessors; processNum++)
