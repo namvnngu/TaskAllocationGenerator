@@ -8,24 +8,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskAllocationGenerator.GreedyAlgorithmService {
+namespace TaskAllocationGenerator.LocalGreedyService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GreedyAlgorithmService.IService")]
-    public interface IService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LocalGreedyService.IGreedyService")]
+    public interface IGreedyService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindAllocations", ReplyAction="http://tempuri.org/IService/FindAllocationsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGreedyService/FindAllocations", ReplyAction="http://tempuri.org/IGreedyService/FindAllocationsResponse")]
         string FindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/FindAllocations", ReplyAction="http://tempuri.org/IService/FindAllocationsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGreedyService/FindAllocations", ReplyAction="http://tempuri.org/IGreedyService/FindAllocationsResponse")]
         System.IAsyncResult BeginFindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile, System.AsyncCallback callback, object asyncState);
         
         string EndFindAllocations(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : TaskAllocationGenerator.GreedyAlgorithmService.IService, System.ServiceModel.IClientChannel {
+    public interface IGreedyServiceChannel : TaskAllocationGenerator.LocalGreedyService.IGreedyService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -49,7 +49,7 @@ namespace TaskAllocationGenerator.GreedyAlgorithmService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<TaskAllocationGenerator.GreedyAlgorithmService.IService>, TaskAllocationGenerator.GreedyAlgorithmService.IService {
+    public partial class GreedyServiceClient : System.ServiceModel.ClientBase<TaskAllocationGenerator.LocalGreedyService.IGreedyService>, TaskAllocationGenerator.LocalGreedyService.IGreedyService {
         
         private BeginOperationDelegate onBeginFindAllocationsDelegate;
         
@@ -57,22 +57,22 @@ namespace TaskAllocationGenerator.GreedyAlgorithmService {
         
         private System.Threading.SendOrPostCallback onFindAllocationsCompletedDelegate;
         
-        public ServiceClient() {
+        public GreedyServiceClient() {
         }
         
-        public ServiceClient(string endpointConfigurationName) : 
+        public GreedyServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public GreedyServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GreedyServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GreedyServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

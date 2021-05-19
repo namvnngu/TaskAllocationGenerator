@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GreedyAlgorithmService.GreedyService" CodeBehind="GreedyService.svc.cs" %>

@@ -61,14 +61,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service.svc" />
+    <Content Include="GreedyService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service.svc.cs">
-      <DependentUpon>Service.svc</DependentUpon>
+    <Compile Include="GreedyService.svc.cs">
+      <DependentUpon>GreedyService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService.cs" />
+    <Compile Include="IGreedyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

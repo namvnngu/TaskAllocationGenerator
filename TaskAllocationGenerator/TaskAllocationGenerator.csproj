@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\GreedyAlgorithmService\Reference.cs">
+    <Compile Include="Connected Services\LocalGreedyService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -84,20 +84,20 @@
     <EmbeddedResource Include="Forms\TaskAllocationForm.resx">
       <DependentUpon>TaskAllocationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\GreedyAlgorithmService\Service.wsdl" />
-    <None Include="Connected Services\GreedyAlgorithmService\Service.xsd">
+    <None Include="Connected Services\LocalGreedyService\GreedyService.wsdl" />
+    <None Include="Connected Services\LocalGreedyService\GreedyService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GreedyAlgorithmService\Service1.xsd">
+    <None Include="Connected Services\LocalGreedyService\GreedyService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GreedyAlgorithmService\Service2.xsd">
+    <None Include="Connected Services\LocalGreedyService\GreedyService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GreedyAlgorithmService\Service3.xsd">
+    <None Include="Connected Services\LocalGreedyService\GreedyService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GreedyAlgorithmService\Service4.xsd">
+    <None Include="Connected Services\LocalGreedyService\GreedyService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -123,19 +123,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\GreedyAlgorithmService\" />
+    <WCFMetadataStorage Include="Connected Services\LocalGreedyService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GreedyAlgorithmService\Service.disco" />
+    <None Include="Connected Services\LocalGreedyService\GreedyService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GreedyAlgorithmService\configuration91.svcinfo" />
+    <None Include="Connected Services\LocalGreedyService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GreedyAlgorithmService\configuration.svcinfo" />
+    <None Include="Connected Services\LocalGreedyService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GreedyAlgorithmService\Reference.svcmap">
+    <None Include="Connected Services\LocalGreedyService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

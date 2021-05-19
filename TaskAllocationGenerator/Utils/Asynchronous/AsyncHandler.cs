@@ -9,7 +9,7 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
 {
     public class AsyncHandler
     {
-        public GreedyAlgorithmService.ServiceClient GreedyServiceClient { get; set; }
+        public LocalGreedyService.GreedyServiceClient GreedyServiceClient { get; set; }
         public int CompletedOperations { get; set; }
         public int TimedOutOperations { get; set; }
         public int NumberOfOperations { get; set; }
@@ -41,7 +41,7 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
         public void SendAsyncRequests()
         {
             // Create WCFS objects
-            GreedyServiceClient = new GreedyAlgorithmService.ServiceClient();
+            GreedyServiceClient = new LocalGreedyService.GreedyServiceClient();
 
             // Set the event handlers
             GreedyServiceClient.FindAllocationsCompleted += GreedyServiceClientFindAllocationsCompleted;
@@ -54,7 +54,7 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
         }
 
         // Event Handler
-        private void GreedyServiceClientFindAllocationsCompleted(object sender, GreedyAlgorithmService.FindAllocationsCompletedEventArgs e)
+        private void GreedyServiceClientFindAllocationsCompleted(object sender, LocalGreedyService.FindAllocationsCompletedEventArgs e)
         {
             try
             {
