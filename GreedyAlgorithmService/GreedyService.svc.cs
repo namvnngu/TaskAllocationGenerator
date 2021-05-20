@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using TaskAllocationUtils.Files;
+using TaskAllocationUtils.Classes;
 
 namespace GreedyAlgorithmService
 {
@@ -13,9 +14,14 @@ namespace GreedyAlgorithmService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class GreedyService : IGreedyService
     {
-        public string FindAllocations(ConfigurationFile configurationFile)
+        public Allocation FindAllocations(string url)
         {
-            return configurationFile.LimitData.ToString();
+            ConfigurationFile configurationFile = new ConfigurationFile(url);
+            configurationFile = configurationFile.ReadAndExtractData();
+            GreedyAlgorithm greedyAlgorithm  = new GreedyAlgorithm(configurationFile);
+            Allocation foundAllocation = greedyAlgorithm.Run();
+
+            return foundAllocation;
         }
     }
 }

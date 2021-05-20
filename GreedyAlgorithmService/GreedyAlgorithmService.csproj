@@ -65,6 +65,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\GreedyAlgorithm.cs" />
     <Compile Include="GreedyService.svc.cs">
       <DependentUpon>GreedyService.svc</DependentUpon>
     </Compile>

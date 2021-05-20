@@ -16,12 +16,12 @@ namespace TaskAllocationGenerator.LocalGreedyService {
     public interface IGreedyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGreedyService/FindAllocations", ReplyAction="http://tempuri.org/IGreedyService/FindAllocationsResponse")]
-        string FindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile);
+        TaskAllocationUtils.Classes.Allocation FindAllocations(string url);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGreedyService/FindAllocations", ReplyAction="http://tempuri.org/IGreedyService/FindAllocationsResponse")]
-        System.IAsyncResult BeginFindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginFindAllocations(string url, System.AsyncCallback callback, object asyncState);
         
-        string EndFindAllocations(System.IAsyncResult result);
+        TaskAllocationUtils.Classes.Allocation EndFindAllocations(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -39,10 +39,10 @@ namespace TaskAllocationGenerator.LocalGreedyService {
             this.results = results;
         }
         
-        public string Result {
+        public TaskAllocationUtils.Classes.Allocation Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((TaskAllocationUtils.Classes.Allocation)(this.results[0]));
             }
         }
     }
@@ -78,27 +78,27 @@ namespace TaskAllocationGenerator.LocalGreedyService {
         
         public event System.EventHandler<FindAllocationsCompletedEventArgs> FindAllocationsCompleted;
         
-        public string FindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile) {
-            return base.Channel.FindAllocations(configurationFile);
+        public TaskAllocationUtils.Classes.Allocation FindAllocations(string url) {
+            return base.Channel.FindAllocations(url);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginFindAllocations(TaskAllocationUtils.Files.ConfigurationFile configurationFile, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginFindAllocations(configurationFile, callback, asyncState);
+        public System.IAsyncResult BeginFindAllocations(string url, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginFindAllocations(url, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndFindAllocations(System.IAsyncResult result) {
+        public TaskAllocationUtils.Classes.Allocation EndFindAllocations(System.IAsyncResult result) {
             return base.Channel.EndFindAllocations(result);
         }
         
         private System.IAsyncResult OnBeginFindAllocations(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            TaskAllocationUtils.Files.ConfigurationFile configurationFile = ((TaskAllocationUtils.Files.ConfigurationFile)(inValues[0]));
-            return this.BeginFindAllocations(configurationFile, callback, asyncState);
+            string url = ((string)(inValues[0]));
+            return this.BeginFindAllocations(url, callback, asyncState);
         }
         
         private object[] OnEndFindAllocations(System.IAsyncResult result) {
-            string retVal = this.EndFindAllocations(result);
+            TaskAllocationUtils.Classes.Allocation retVal = this.EndFindAllocations(result);
             return new object[] {
                     retVal};
         }
@@ -110,11 +110,11 @@ namespace TaskAllocationGenerator.LocalGreedyService {
             }
         }
         
-        public void FindAllocationsAsync(TaskAllocationUtils.Files.ConfigurationFile configurationFile) {
-            this.FindAllocationsAsync(configurationFile, null);
+        public void FindAllocationsAsync(string url) {
+            this.FindAllocationsAsync(url, null);
         }
         
-        public void FindAllocationsAsync(TaskAllocationUtils.Files.ConfigurationFile configurationFile, object userState) {
+        public void FindAllocationsAsync(string url, object userState) {
             if ((this.onBeginFindAllocationsDelegate == null)) {
                 this.onBeginFindAllocationsDelegate = new BeginOperationDelegate(this.OnBeginFindAllocations);
             }
@@ -125,7 +125,7 @@ namespace TaskAllocationGenerator.LocalGreedyService {
                 this.onFindAllocationsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnFindAllocationsCompleted);
             }
             base.InvokeAsync(this.onBeginFindAllocationsDelegate, new object[] {
-                        configurationFile}, this.onEndFindAllocationsDelegate, this.onFindAllocationsCompletedDelegate, userState);
+                        url}, this.onEndFindAllocationsDelegate, this.onFindAllocationsCompletedDelegate, userState);
         }
     }
 }

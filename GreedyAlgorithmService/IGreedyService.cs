@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using TaskAllocationUtils.Files;
+using TaskAllocationUtils.Classes;
 
 namespace GreedyAlgorithmService
 {
@@ -15,6 +16,7 @@ namespace GreedyAlgorithmService
     {
 
         [OperationContract]
-        string FindAllocations(ConfigurationFile configurationFile);
+        Allocation FindAllocations(string url);
+
     }
 }

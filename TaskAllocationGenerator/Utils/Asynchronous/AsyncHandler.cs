@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Files;
+using TaskAllocationUtils.Classes;
 
 namespace TaskAllocationGenerator.Utils.Asynchronous
 {
@@ -13,9 +14,9 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
         public int CompletedOperations { get; set; }
         public int TimedOutOperations { get; set; }
         public int NumberOfOperations { get; set; }
-        public ConfigurationFile Configuration { get; set; }
+        public string Url { get; set; }
         public System.Threading.AutoResetEvent AutoResetEvent { get; set; }
-        public List<string> Results;
+        public List<Allocation> Results;
         readonly object ALock;
 
         public AsyncHandler()
@@ -24,17 +25,17 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
             TimedOutOperations = 0;
             NumberOfOperations = 4;
             ALock = new object();
-            Results = new List<string>();
+            Results = new List<Allocation>();
         }
 
-        public AsyncHandler(ConfigurationFile configuration, System.Threading.AutoResetEvent autoResetEvent)
+        public AsyncHandler(string url, System.Threading.AutoResetEvent autoResetEvent)
         {
             CompletedOperations = 0;
             TimedOutOperations = 0;
             NumberOfOperations = 4;
-            Configuration = configuration;
+            Url = url;
             ALock = new object();
-            Results = new List<string>();
+            Results = new List<Allocation>();
             AutoResetEvent = autoResetEvent;
         }
 
@@ -47,10 +48,10 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
             GreedyServiceClient.FindAllocationsCompleted += GreedyServiceClientFindAllocationsCompleted;
 
             // Async calls
-            GreedyServiceClient.FindAllocationsAsync(Configuration);
-            GreedyServiceClient.FindAllocationsAsync(Configuration);
-            GreedyServiceClient.FindAllocationsAsync(Configuration);
-            GreedyServiceClient.FindAllocationsAsync(Configuration);
+            GreedyServiceClient.FindAllocationsAsync(Url);
+            GreedyServiceClient.FindAllocationsAsync(Url);
+            GreedyServiceClient.FindAllocationsAsync(Url);
+            GreedyServiceClient.FindAllocationsAsync(Url);
         }
 
         // Event Handler
@@ -60,7 +61,7 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
             {
                 lock (ALock)
                 {
-                    string result = e.Result;
+                    Allocation result = e.Result;
 
                     // Increment completed counter
                     CompletedOperations++;
@@ -76,7 +77,7 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
                 }
             } catch (Exception ex)
             {
-
+                Console.WriteLine("Error");
             }
         }
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TaskAllocationGenerator.Forms;
 using TaskAllocationUtils.Files;
+using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Constants;
 using TaskAllocationGenerator.Utils.Asynchronous;
 using TaskAllocationGenerator.Utils.Allocations;
@@ -37,19 +38,20 @@ namespace TaskAllocationGenerator
             aboutBox.ShowDialog();
         }
 
-        private void GeneratorButtonClick(object sender, EventArgs e)
+        private async void GeneratorButtonClick(object sender, EventArgs e)
         {
-            /*
             /// Pre Process
-            ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
+            string textUrl = urlComboBox.Text;
+            ConfigurationFile configurationFile = new ConfigurationFile(textUrl);
             AsyncHandler asyncHandler = new AsyncHandler();
+
+            configurationFile = configurationFile.ReadAndExtractData();
+            asyncHandler.Url = textUrl;
+            asyncHandler.AutoResetEvent = autoResetEvent;
             System.Threading.SynchronizationContext syncContext = System.Threading.SynchronizationContext.Current;
 
             /// In Process
             webBrowser.DocumentText = "Finding the optimal task allocations is in process...";
-
-            asyncHandler.Configuration = configurationFile.ReadAndExtractData();
-            asyncHandler.AutoResetEvent = autoResetEvent;
 
             // Create 2nd thread
             await System.Threading.Tasks.Task.Run(() => asyncHandler.SendAsyncRequests());
@@ -59,26 +61,32 @@ namespace TaskAllocationGenerator
 
             /// Post Process
             // Process all results that return within 5 mins
-            string text = "";
-
             lock (ALock)
             {
-                List<string> results = asyncHandler.Results;
-                foreach (string result in results)
-                {
-                    text += result + Environment.NewLine;
-                    Console.WriteLine(result);
-                }
-
+                List<Allocation> results = asyncHandler.Results;
+                webBrowser.DocumentText = Displayer.Display(results, configurationFile);
             }
 
-            webBrowser.DocumentText = text;
-            */
 
-            ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
+            /*ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
             configurationFile.ReadAndExtractData();
             AllocationFinder allocationFinder = new AllocationFinder(configurationFile);
-            webBrowser.DocumentText = allocationFinder.Run();
+            Allocation foundAllocation = allocationFinder.Run();*/
+
+            /*StringBuilder stringBuilder = new StringBuilder();
+            for (int processNum = 0; processNum < numOfProcessors; processNum++)
+            {
+                stringBuilder.Append("<div>");
+
+                for (int taskNum = 0; taskNum < numOfTasks; taskNum++)
+                {
+                    stringBuilder.Append(allocationMap[processNum][taskNum] + " ");
+                    // stringBuilder.Append(tasksEnergy[processNum, taskNum] + " ");
+                    // stringBuilder.Append(tasksRuntimes[processNum, taskNum] + " ");
+                }
+
+                stringBuilder.Append("</div>");
+            }*/
         }
     }
 }
