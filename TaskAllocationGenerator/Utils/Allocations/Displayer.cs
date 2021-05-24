@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskAllocationUtils.Classes;
+using TaskAllocationUtils.Allocations;
 using TaskAllocationUtils.Files;
 
 namespace TaskAllocationGenerator.Utils.Allocations
@@ -13,6 +14,7 @@ namespace TaskAllocationGenerator.Utils.Allocations
         public static string Display(List<Allocation> allocations, ConfigurationFile configuration)
         {
             StringBuilder renderedText = new StringBuilder();
+            List<double> runtimes = new List<double>();
 
             foreach (Allocation allocation in allocations)
             {
@@ -20,6 +22,24 @@ namespace TaskAllocationGenerator.Utils.Allocations
                 double allocationRuntime = allocation.Runtime;
                 double allocationEnergy = allocation.Energy;
                 List<AllocationProcessor> processorAllocations = allocation.ProcessorAllocations;
+
+                if (AllocationValidator.ValidateAllocation(allocation, configuration))
+                {
+                    Console.WriteLine("Valid");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid");
+                }
+
+                if (runtimes.Contains(allocationEnergy))
+                {
+                    continue;
+                } 
+                else
+                {
+                    runtimes.Add(allocationEnergy);
+                }
 
                 // Allocation Info
                 renderedText.Append("<br><table>");

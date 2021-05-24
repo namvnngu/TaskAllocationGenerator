@@ -40,6 +40,7 @@ namespace TaskAllocationGenerator
 
         private async void GeneratorButtonClick(object sender, EventArgs e)
         {
+            
             /// Pre Process
             string textUrl = urlComboBox.Text;
             ConfigurationFile configurationFile = new ConfigurationFile(textUrl);
@@ -67,26 +68,11 @@ namespace TaskAllocationGenerator
                 webBrowser.DocumentText = Displayer.Display(results, configurationFile);
             }
 
-
             /*ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
             configurationFile.ReadAndExtractData();
             AllocationFinder allocationFinder = new AllocationFinder(configurationFile);
-            Allocation foundAllocation = allocationFinder.Run();*/
-
-            /*StringBuilder stringBuilder = new StringBuilder();
-            for (int processNum = 0; processNum < numOfProcessors; processNum++)
-            {
-                stringBuilder.Append("<div>");
-
-                for (int taskNum = 0; taskNum < numOfTasks; taskNum++)
-                {
-                    stringBuilder.Append(allocationMap[processNum][taskNum] + " ");
-                    // stringBuilder.Append(tasksEnergy[processNum, taskNum] + " ");
-                    // stringBuilder.Append(tasksRuntimes[processNum, taskNum] + " ");
-                }
-
-                stringBuilder.Append("</div>");
-            }*/
+            Allocation foundAllocation = allocationFinder.Run();
+            Console.WriteLine(foundAllocation);*/
         }
     }
 }

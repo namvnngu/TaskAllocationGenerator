@@ -13,17 +13,16 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
         public LocalGreedyService.GreedyServiceClient GreedyServiceClient { get; set; }
         public int CompletedOperations { get; set; }
         public int TimedOutOperations { get; set; }
-        public int NumberOfOperations { get; set; }
         public string Url { get; set; }
         public System.Threading.AutoResetEvent AutoResetEvent { get; set; }
         public List<Allocation> Results;
         readonly object ALock;
+        public const int NUMBER_OF_OPERATIONS = 4;
 
         public AsyncHandler()
         {
             CompletedOperations = 0;
             TimedOutOperations = 0;
-            NumberOfOperations = 4;
             ALock = new object();
             Results = new List<Allocation>();
         }
@@ -32,7 +31,6 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
         {
             CompletedOperations = 0;
             TimedOutOperations = 0;
-            NumberOfOperations = 4;
             Url = url;
             ALock = new object();
             Results = new List<Allocation>();
@@ -70,7 +68,7 @@ namespace TaskAllocationGenerator.Utils.Asynchronous
                     Results.Add(result);
 
                     // If all completed, stop waiting
-                    if (NumberOfOperations == CompletedOperations)
+                    if (NUMBER_OF_OPERATIONS == CompletedOperations)
                     {
                         AutoResetEvent.Set();
                     }

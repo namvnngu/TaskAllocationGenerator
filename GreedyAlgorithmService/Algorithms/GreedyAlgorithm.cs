@@ -30,146 +30,60 @@ namespace GreedyAlgorithmService
             List<List<string>> allocationMap = InitalizeMap(numOfTasks, numOfProcessors);
             double[,] tasksRuntimes = CalculateAllTasksRuntimes(numOfTasks, numOfProcessors);
             double[,] tasksEnergy = CalculateAllTasksEnergy(numOfTasks, numOfProcessors);
-            bool validAllocation = false;
             Allocation newAllocation = null;
 
-            for (int loop = 0; !validAllocation && loop < 10; loop++)
+
+            double allocationEnergy = 0.0;
+            double[] allocationRuntime = new double[numOfProcessors];
+            allocationMap = InitalizeMap(numOfTasks, numOfProcessors);
+
+
+            for (int taskNum = numOfTasks - 1; taskNum >= 0; taskNum--)
             {
-                double allocationEnergy = 0.0;
-                double[] allocationRuntime = new double[numOfProcessors];
-                allocationMap = InitalizeMap(numOfTasks, numOfProcessors);
+                Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
+                Task task = Configuration.Tasks[taskNum];
+                int taskRAM = task.RAM;
+                int taskDownload = task.Download;
+                int taskUpload = task.Upload;
 
-                if (loop == 0)
+                for (int processNum = 0; processNum < numOfProcessors; processNum++)
                 {
-                    for (int taskNum = numOfTasks - 1; taskNum >= 0; taskNum--)
-                    {
-                        Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
-                        Task task = Configuration.Tasks[taskNum];
-                        int taskRAM = task.RAM;
-                        int taskDownload = task.Download;
-                        int taskUpload = task.Upload;
+                    double currentTaskEnergy = tasksEnergy[processNum, taskNum];
 
-                        for (int processNum = 0; processNum < numOfProcessors; processNum++)
-                        {
-                            double currentTaskEnergy = tasksEnergy[processNum, taskNum];
-
-                            taskEnergyInProcessorDict.Add(processNum, currentTaskEnergy);
-                        }
-
-                        taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-                        foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
-                        {
-                            int processorID = entry.Key;
-                            Processor processor = Configuration.Processors[processorID];
-                            int processorRAM = processor.RAM;
-                            int processorDownload = processor.Download;
-                            int processorUpload = processor.Upload;
-                            double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
-
-                            if ((taskRAM <= processorRAM) &&
-                                (taskDownload <= processorDownload) &&
-                                (taskUpload <= processorUpload) &&
-                                (currentAllocationRuntime <= duration))
-                            {
-                                allocationMap[processorID][taskNum] = "1";
-                                allocationRuntime[processorID] = currentAllocationRuntime;
-                                allocationEnergy += tasksEnergy[processorID, taskNum];
-
-                                break;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    for (int taskNum = numOfTasks / 2; taskNum < numOfTasks; taskNum++)
-                    {
-                        Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
-                        Task task = Configuration.Tasks[taskNum];
-                        int taskRAM = task.RAM;
-                        int taskDownload = task.Download;
-                        int taskUpload = task.Upload;
-
-                        for (int processNum = numOfProcessors - 1; processNum >= 0; processNum--)
-                        {
-                            double currentTaskEnergy = tasksEnergy[processNum, taskNum];
-
-                            taskEnergyInProcessorDict.Add(processNum, currentTaskEnergy);
-                        }
-
-                        taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-                        foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
-                        {
-                            int processorID = entry.Key;
-                            Processor processor = Configuration.Processors[processorID];
-                            int processorRAM = processor.RAM;
-                            int processorDownload = processor.Download;
-                            int processorUpload = processor.Upload;
-                            double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
-
-                            if ((taskRAM <= processorRAM) &&
-                                (taskDownload <= processorDownload) &&
-                                (taskUpload <= processorUpload) &&
-                                (currentAllocationRuntime <= duration))
-                            {
-                                allocationMap[processorID][taskNum] = "1";
-                                allocationRuntime[processorID] = currentAllocationRuntime;
-                                allocationEnergy += tasksEnergy[processorID, taskNum];
-
-                                break;
-                            }
-                        }
-                    }
-
-                    for (int taskNum = numOfTasks / 2 - 1; taskNum >= 0; taskNum--)
-                    {
-                        Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
-                        Task task = Configuration.Tasks[taskNum];
-                        int taskRAM = task.RAM;
-                        int taskDownload = task.Download;
-                        int taskUpload = task.Upload;
-
-                        for (int processNum = numOfProcessors - 1; processNum >= 0; processNum--)
-                        {
-                            double currentTaskEnergy = tasksEnergy[processNum, taskNum];
-
-                            taskEnergyInProcessorDict.Add(processNum, currentTaskEnergy);
-                        }
-
-                        taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-                        foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
-                        {
-                            int processorID = entry.Key;
-                            Processor processor = Configuration.Processors[processorID];
-                            int processorRAM = processor.RAM;
-                            int processorDownload = processor.Download;
-                            int processorUpload = processor.Upload;
-                            double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
-
-                            if ((taskRAM <= processorRAM) &&
-                                (taskDownload <= processorDownload) &&
-                                (taskUpload <= processorUpload) &&
-                                (currentAllocationRuntime <= duration))
-                            {
-                                allocationMap[processorID][taskNum] = "1";
-                                allocationRuntime[processorID] = currentAllocationRuntime;
-                                allocationEnergy += tasksEnergy[processorID, taskNum];
-
-                                break;
-                            }
-                        }
-                    }
+                    taskEnergyInProcessorDict.Add(processNum, currentTaskEnergy);
                 }
 
-                newAllocation = AllocationCalculator.CalculateAllocationValues(allocationMap, Configuration);
-                if (AllocationValidator.ValidateAllocation(newAllocation, Configuration))
+                taskEnergyInProcessorDict = taskEnergyInProcessorDict.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+                foreach (KeyValuePair<int, double> entry in taskEnergyInProcessorDict)
                 {
-                    validAllocation = true;
+                    int processorID = entry.Key;
+                    Processor processor = Configuration.Processors[processorID];
+                    int processorRAM = processor.RAM;
+                    int processorDownload = processor.Download;
+                    int processorUpload = processor.Upload;
+                    double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
+
+                    if ((taskRAM <= processorRAM) &&
+                        (taskDownload <= processorDownload) &&
+                        (taskUpload <= processorUpload) &&
+                        (currentAllocationRuntime <= duration))
+                    {
+                        allocationMap[processorID][taskNum] = "1";
+                        allocationRuntime[processorID] = currentAllocationRuntime;
+                        allocationEnergy += tasksEnergy[processorID, taskNum];
+
+                        break;
+                    }
                 }
             }
+
+            newAllocation = AllocationCalculator.CalculateAllocationValues(allocationMap, Configuration);
+            if (AllocationValidator.ValidateAllocation(newAllocation, Configuration))
+            {
+                return newAllocation;
+            }
+
 
             return newAllocation;
         }

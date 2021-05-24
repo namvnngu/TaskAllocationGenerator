@@ -60,11 +60,6 @@ namespace TaskAllocationUtils.Allocations
 
             energy = Math.Round(energy, 2);
 
-            if (energy == 139.16)
-            {
-                energy += 30;
-            }
-
             return energy;
         }
 
@@ -146,7 +141,7 @@ namespace TaskAllocationUtils.Allocations
             return communicationEnergy;
         }
 
-        
+
         private static double CalculateLocalCommnucationEnergy(List<int> tasks, Communication communication)
         {
             double energy = 0;
@@ -190,7 +185,6 @@ namespace TaskAllocationUtils.Allocations
 
         private static List<AllocationProcessor> CalculateProcessorAllocationValues(List<List<string>> allocationMap, ConfigurationFile configuration)
         {
-
             List<AllocationProcessor> processorAllocations = new List<AllocationProcessor>();
             int numOfProcessors = allocationMap.Count; // Number of rows
             int numOfTasks = allocationMap[0].Count; // Number of columns
