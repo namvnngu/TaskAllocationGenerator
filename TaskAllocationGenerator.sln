@@ -5,12 +5,12 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAllocationGenerator", "TaskAllocationGenerator\TaskAllocationGenerator.csproj", "{2D75742A-8B8A-4123-BF78-190E18D868F8}"
 	ProjectSection(ProjectDependencies) = postProject
-		{9FF0574F-0BE9-4BEE-91E6-F9EEB894A151} = {9FF0574F-0BE9-4BEE-91E6-F9EEB894A151}
+		{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48} = {EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedyAlgorithmService", "GreedyAlgorithmService\GreedyAlgorithmService.csproj", "{9FF0574F-0BE9-4BEE-91E6-F9EEB894A151}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAllocationUtils", "TaskAllocationUtils\TaskAllocationUtils.csproj", "{0ED8DED2-BCE2-479B-AD1C-AEF35CE6529D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedyService", "GreedyService\GreedyService.csproj", "{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +22,14 @@ Global
 		{2D75742A-8B8A-4123-BF78-190E18D868F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D75742A-8B8A-4123-BF78-190E18D868F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D75742A-8B8A-4123-BF78-190E18D868F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FF0574F-0BE9-4BEE-91E6-F9EEB894A151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FF0574F-0BE9-4BEE-91E6-F9EEB894A151}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FF0574F-0BE9-4BEE-91E6-F9EEB894A151}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FF0574F-0BE9-4BEE-91E6-F9EEB894A151}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0ED8DED2-BCE2-479B-AD1C-AEF35CE6529D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0ED8DED2-BCE2-479B-AD1C-AEF35CE6529D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED8DED2-BCE2-479B-AD1C-AEF35CE6529D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED8DED2-BCE2-479B-AD1C-AEF35CE6529D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

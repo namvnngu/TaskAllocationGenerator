@@ -6,7 +6,7 @@ __Unit__: SIT323 - Cloud Application Development
 
 __University__: Deakin Unversity
 
-__Technology__: Window Forms App (.NET Framework 4.8), AWS Cloud Provider
+__Technology__: Window Forms App (.NET Framework 4.7), AWS Cloud Provider
 
 __IDE__: Visual Studio 2019
 

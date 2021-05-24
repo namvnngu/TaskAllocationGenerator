@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2eec6ae1-90f5-4353-8ccf-b1bf2438f19f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c50ba8a2-bdbb-4570-a915-9bcb6822f8f7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,15 +18,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:49779/GreedyService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:63260/GreedyService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GreedyService.xsd" MetadataType="Schema" ID="c7fe515b-f65f-4d5f-ad49-292e0008001c" SourceId="1" SourceUrl="http://localhost:49779/GreedyService.svc?xsd=xsd3" />
-    <MetadataFile FileName="GreedyService.wsdl" MetadataType="Wsdl" ID="bc33b808-1752-4ff6-9e22-85d5c4795c70" SourceId="1" SourceUrl="http://localhost:49779/GreedyService.svc?wsdl" />
-    <MetadataFile FileName="GreedyService.disco" MetadataType="Disco" ID="f6c29e4c-016a-4b6d-b364-263de9f22f19" SourceId="1" SourceUrl="http://localhost:49779/GreedyService.svc?disco" />
-    <MetadataFile FileName="GreedyService1.xsd" MetadataType="Schema" ID="5e43ce75-b687-4a3e-b341-aea9305eda4e" SourceId="1" SourceUrl="http://localhost:49779/GreedyService.svc?xsd=xsd2" />
-    <MetadataFile FileName="GreedyService2.xsd" MetadataType="Schema" ID="f0854ef3-ef55-4ec5-827f-d37dc4ff59f6" SourceId="1" SourceUrl="http://localhost:49779/GreedyService.svc?xsd=xsd1" />
-    <MetadataFile FileName="GreedyService3.xsd" MetadataType="Schema" ID="008563b3-d36f-4cc4-b4ce-3a71cdb3b563" SourceId="1" SourceUrl="http://localhost:49779/GreedyService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GreedyService.xsd" MetadataType="Schema" ID="fa4453f3-595d-48f2-9687-173f5cecdff7" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GreedyService1.xsd" MetadataType="Schema" ID="ac28272b-7b45-4bc1-a3b7-3be9b924610b" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GreedyService.wsdl" MetadataType="Wsdl" ID="1dee6cbd-5132-4ce3-81a5-477aec7092b1" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?wsdl" />
+    <MetadataFile FileName="GreedyService.disco" MetadataType="Disco" ID="fa3dd7a5-2b7e-41bb-9074-2c1653e92074" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?disco" />
+    <MetadataFile FileName="GreedyService2.xsd" MetadataType="Schema" ID="118a6554-ed61-4b8a-8d92-c820ef18f9ee" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd3" />
+    <MetadataFile FileName="GreedyService3.xsd" MetadataType="Schema" ID="61c841fb-d15d-4386-8677-3eaa5d90372d" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

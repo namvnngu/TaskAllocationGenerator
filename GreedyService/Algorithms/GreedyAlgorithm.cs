@@ -6,7 +6,7 @@ using TaskAllocationUtils.Files;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Allocations;
 
-namespace GreedyAlgorithmService
+namespace GreedyService
 {
     public class GreedyAlgorithm
     {
