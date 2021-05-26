@@ -70,9 +70,10 @@ namespace TaskAllocationGenerator
 
             ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
             configurationFile.ReadAndExtractData();
-            HeuristicAllocationFinder heuristicAllocationFinder = new HeuristicAllocationFinder(0.05, 100, configurationFile, 500);
+            HeuristicAllocationFinder heuristicAllocationFinder = new HeuristicAllocationFinder(0.3, 1000, configurationFile, 500);
             Allocation foundAllocation = heuristicAllocationFinder.Run();
-            webBrowser.DocumentText = Displayer.Display(new List<Allocation>() { foundAllocation }, configurationFile);
+            List<Allocation> foundAllocations = (foundAllocation != null) ? (new List<Allocation> { foundAllocation }) : (new List<Allocation>());
+            webBrowser.DocumentText = Displayer.Display(foundAllocations, configurationFile);
         }
     }
 }

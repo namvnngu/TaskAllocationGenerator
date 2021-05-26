@@ -23,14 +23,14 @@ namespace TaskAllocationGenerator.Utils.Allocations
                 double allocationEnergy = allocation.Energy;
                 List<AllocationProcessor> processorAllocations = allocation.ProcessorAllocations;
 
-                if (AllocationValidator.ValidateAllocation(allocation, configuration))
+                /*if (AllocationValidator.ValidateAllocation(allocation, configuration))
                 {
                     Console.WriteLine("Valid");
                 }
                 else
                 {
                     Console.WriteLine("Invalid");
-                }
+                }*/
 
                 if (runtimes.Contains(allocationEnergy))
                 {
