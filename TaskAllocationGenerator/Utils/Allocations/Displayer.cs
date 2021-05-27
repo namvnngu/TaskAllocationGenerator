@@ -13,53 +13,34 @@ namespace TaskAllocationGenerator.Utils.Allocations
     {
         public static string Display(List<Allocation> allocations, ConfigurationFile configuration)
         {
+            if (allocations.Count == 0) return "";
+
             StringBuilder renderedText = new StringBuilder();
-            List<double> runtimes = new List<double>();
+            Allocation allocation = SelectBest(allocations);
+            int allocationID = allocation.ID;
+            double allocationRuntime = allocation.Runtime;
+            double allocationEnergy = allocation.Energy;
+            List<AllocationProcessor> processorAllocations = allocation.ProcessorAllocations;
 
-            foreach (Allocation allocation in allocations)
-            {
-                int allocationID = allocation.ID;
-                double allocationRuntime = allocation.Runtime;
-                double allocationEnergy = allocation.Energy;
-                List<AllocationProcessor> processorAllocations = allocation.ProcessorAllocations;
+            // Allocation Info
+            renderedText.Append("<br><table>");
+            renderedText.Append("<tr>");
+            renderedText.Append($"<th colspan=\"4\" style=\"text-align:left\">Allocation ID = {allocationID}, Runtime = {allocationRuntime}, Energy = {allocationEnergy}</th>");
+            renderedText.Append("</tr>");
 
-                /*if (AllocationValidator.ValidateAllocation(allocation, configuration))
-                {
-                    Console.WriteLine("Valid");
-                }
-                else
-                {
-                    Console.WriteLine("Invalid");
-                }*/
+            // Header
+            renderedText.Append("<tr>");
+            renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 5px 0px 0px\">Allocation</th>");
+            renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 5px 0px 5px\">RAM</th>");
+            renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 5px 0px 5px\">Download</th>");
+            renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 0px 0px 5px\">Upload</th>");
+            renderedText.Append("</tr>");
 
-                if (runtimes.Contains(allocationEnergy))
-                {
-                    continue;
-                } 
-                else
-                {
-                    runtimes.Add(allocationEnergy);
-                }
+            // Body
+            renderedText.Append(DisplayProcessorAllocation(processorAllocations, configuration));
 
-                // Allocation Info
-                renderedText.Append("<br><table>");
-                renderedText.Append("<tr>");
-                renderedText.Append($"<th colspan=\"4\" style=\"text-align:left\">Allocation ID = {allocationID}, Runtime = {allocationRuntime}, Energy = {allocationEnergy}</th>");
-                renderedText.Append("</tr>");
+            renderedText.Append("</table>");
 
-                // Header
-                renderedText.Append("<tr>");
-                renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 5px 0px 0px\">Allocation</th>");
-                renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 5px 0px 5px\">RAM</th>");
-                renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 5px 0px 5px\">Download</th>");
-                renderedText.Append($"<th style=\"text-align:left\" style=\"padding: 0px 0px 0px 5px\">Upload</th>");
-                renderedText.Append("</tr>");
-
-                // Body
-                renderedText.Append(DisplayProcessorAllocation(processorAllocations, configuration));
-
-                renderedText.Append("</table>");
-            }
 
             return renderedText.ToString();
         }
@@ -89,6 +70,23 @@ namespace TaskAllocationGenerator.Utils.Allocations
             }
 
             return renderedText.ToString();
+        }
+
+        private static Allocation SelectBest(List<Allocation> allocations)
+        {
+            double minEnergy = double.MaxValue;
+            Allocation selectedAllocation = allocations[0];
+
+            foreach (Allocation allocation in allocations)
+            {
+                if (allocation.Energy <= minEnergy)
+                {
+                    minEnergy = allocation.Energy;
+                    selectedAllocation = allocation;
+                }
+            }
+
+            return selectedAllocation;
         }
     }
 }
