@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EBC802A3-60E9-44F1-9EA1-41ACA0E4CD48}</ProjectGuid>
+    <ProjectGuid>{00649B25-2486-4124-B666-E790BEA0D154}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GreedyService</RootNamespace>
-    <AssemblyName>GreedyService</AssemblyName>
+    <RootNamespace>HeuristicService</RootNamespace>
+    <AssemblyName>HeuristicService</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -65,21 +65,20 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TaskAllocationUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="TaskAllocationUtils">
       <HintPath>Lib\TaskAllocationUtils.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GreedyService.svc" />
+    <Content Include="HeuristicService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\GreedyAlgorithm.cs" />
-    <Compile Include="GreedyService.svc.cs">
-      <DependentUpon>GreedyService.svc</DependentUpon>
+    <Compile Include="Algorithms\HeuristicAlgorithm.cs" />
+    <Compile Include="HeuristicService.svc.cs">
+      <DependentUpon>HeuristicService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IGreedyService.cs" />
+    <Compile Include="IHeuristicService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,9 +106,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63260</DevelopmentServerPort>
+          <DevelopmentServerPort>55964</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63260/</IISUrl>
+          <IISUrl>http://localhost:55964/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f8eed478-5932-4243-811d-05c4c96220a1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55964/HeuristicService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HeuristicService.xsd" MetadataType="Schema" ID="4fbf1521-54ca-425d-b8ad-d3f0bed8856d" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HeuristicService.disco" MetadataType="Disco" ID="d025a47a-65fd-4f5d-a4f7-29883980f6a5" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?disco" />
+    <MetadataFile FileName="HeuristicService1.xsd" MetadataType="Schema" ID="999abcfb-519f-4016-845f-aea41b0f90c5" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?xsd=xsd1" />
+    <MetadataFile FileName="HeuristicService4.xsd" MetadataType="Schema" ID="e34c1652-ba88-4088-9578-39395555ea07" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?xsd=xsd4" />
+    <MetadataFile FileName="HeuristicService.wsdl" MetadataType="Wsdl" ID="f359b7c9-09a3-4a4f-80db-74199bd379ed" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?wsdl" />
+    <MetadataFile FileName="HeuristicService2.xsd" MetadataType="Schema" ID="caa3d9cd-fe52-41a2-a3b8-42731ccaca4a" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?xsd=xsd3" />
+    <MetadataFile FileName="HeuristicService3.xsd" MetadataType="Schema" ID="732de323-54a8-4002-ab3b-bd27c479eee0" SourceId="1" SourceUrl="http://localhost:55964/HeuristicService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

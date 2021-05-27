@@ -47,9 +47,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TaskAllocationUtils">
+      <HintPath>Lib\TaskAllocationUtils.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\LocalGreedyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\LocalHeuristicService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -100,6 +108,25 @@
     <None Include="Connected Services\LocalGreedyService\GreedyService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\LocalGreedyService\GreedyService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService.wsdl" />
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\TaskAllocationUtils.Classes.Allocation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,13 +145,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TaskAllocationUtils\TaskAllocationUtils.csproj">
-      <Project>{0ed8ded2-bce2-479b-ad1c-aef35ce6529d}</Project>
-      <Name>TaskAllocationUtils</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\LocalGreedyService\" />
+    <WCFMetadataStorage Include="Connected Services\LocalHeuristicService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LocalGreedyService\GreedyService.disco" />
@@ -137,6 +159,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LocalGreedyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LocalHeuristicService\HeuristicService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LocalHeuristicService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LocalHeuristicService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LocalHeuristicService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

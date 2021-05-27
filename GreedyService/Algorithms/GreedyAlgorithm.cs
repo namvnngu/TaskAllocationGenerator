@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Diagnostics;
+using System.ServiceModel;
 using TaskAllocationUtils.Files;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Allocations;
+using TaskAllocationUtils.Constants;
 
 namespace GreedyService
 {
@@ -31,15 +34,19 @@ namespace GreedyService
             double[,] tasksRuntimes = CalculateAllTasksRuntimes(numOfTasks, numOfProcessors);
             double[,] tasksEnergy = CalculateAllTasksEnergy(numOfTasks, numOfProcessors);
             Allocation newAllocation = null;
-
-
+            Stopwatch stopwatch = new Stopwatch();
             double allocationEnergy = 0.0;
             double[] allocationRuntime = new double[numOfProcessors];
             allocationMap = InitalizeMap(numOfTasks, numOfProcessors);
 
-
             for (int taskNum = numOfTasks - 1; taskNum >= 0; taskNum--)
             {
+                if (stopwatch.ElapsedMilliseconds > AsyncCall.TIMEOUT_LIMIT)
+                {
+                    TimeoutFault timeoutFault = new TimeoutFault("GreedyService operation timed out");
+                    throw new FaultException<TimeoutFault>(timeoutFault);
+                }
+
                 Dictionary<int, double> taskEnergyInProcessorDict = new Dictionary<int, double>();
                 Task task = Configuration.Tasks[taskNum];
                 int taskRAM = task.RAM;

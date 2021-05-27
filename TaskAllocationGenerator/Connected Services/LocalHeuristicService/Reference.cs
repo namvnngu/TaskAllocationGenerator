@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskAllocationGenerator.LocalGreedyService {
+namespace TaskAllocationGenerator.LocalHeuristicService {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TimeoutFault", Namespace="http://schemas.datacontract.org/2004/07/GreedyService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TimeoutFault", Namespace="http://schemas.datacontract.org/2004/07/HeuristicService")]
     [System.SerializableAttribute()]
     public partial class TimeoutFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -59,21 +59,21 @@ namespace TaskAllocationGenerator.LocalGreedyService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LocalGreedyService.IGreedyService")]
-    public interface IGreedyService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LocalHeuristicService.IHeuristicService")]
+    public interface IHeuristicService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGreedyService/FindAllocations", ReplyAction="http://tempuri.org/IGreedyService/FindAllocationsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TaskAllocationGenerator.LocalGreedyService.TimeoutFault), Action="http://tempuri.org/IGreedyService/FindAllocationsTimeoutFaultFault", Name="TimeoutFault", Namespace="http://schemas.datacontract.org/2004/07/GreedyService")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHeuristicService/FindAllocations", ReplyAction="http://tempuri.org/IHeuristicService/FindAllocationsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TaskAllocationGenerator.LocalHeuristicService.TimeoutFault), Action="http://tempuri.org/IHeuristicService/FindAllocationsTimeoutFaultFault", Name="TimeoutFault", Namespace="http://schemas.datacontract.org/2004/07/HeuristicService")]
         TaskAllocationUtils.Classes.Allocation FindAllocations(string url);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGreedyService/FindAllocations", ReplyAction="http://tempuri.org/IGreedyService/FindAllocationsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IHeuristicService/FindAllocations", ReplyAction="http://tempuri.org/IHeuristicService/FindAllocationsResponse")]
         System.IAsyncResult BeginFindAllocations(string url, System.AsyncCallback callback, object asyncState);
         
         TaskAllocationUtils.Classes.Allocation EndFindAllocations(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IGreedyServiceChannel : TaskAllocationGenerator.LocalGreedyService.IGreedyService, System.ServiceModel.IClientChannel {
+    public interface IHeuristicServiceChannel : TaskAllocationGenerator.LocalHeuristicService.IHeuristicService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -97,7 +97,7 @@ namespace TaskAllocationGenerator.LocalGreedyService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GreedyServiceClient : System.ServiceModel.ClientBase<TaskAllocationGenerator.LocalGreedyService.IGreedyService>, TaskAllocationGenerator.LocalGreedyService.IGreedyService {
+    public partial class HeuristicServiceClient : System.ServiceModel.ClientBase<TaskAllocationGenerator.LocalHeuristicService.IHeuristicService>, TaskAllocationGenerator.LocalHeuristicService.IHeuristicService {
         
         private BeginOperationDelegate onBeginFindAllocationsDelegate;
         
@@ -105,22 +105,22 @@ namespace TaskAllocationGenerator.LocalGreedyService {
         
         private System.Threading.SendOrPostCallback onFindAllocationsCompletedDelegate;
         
-        public GreedyServiceClient() {
+        public HeuristicServiceClient() {
         }
         
-        public GreedyServiceClient(string endpointConfigurationName) : 
+        public HeuristicServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public GreedyServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public HeuristicServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GreedyServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public HeuristicServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GreedyServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public HeuristicServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

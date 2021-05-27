@@ -40,7 +40,7 @@ namespace TaskAllocationGenerator
 
         private async void GeneratorButtonClick(object sender, EventArgs e)
         {
-            /*
+            
             /// Pre Process
             string textUrl = urlComboBox.Text;
             ConfigurationFile configurationFile = new ConfigurationFile(textUrl);
@@ -66,14 +66,14 @@ namespace TaskAllocationGenerator
             {
                 List<Allocation> results = asyncHandler.Results;
                 webBrowser.DocumentText = Displayer.Display(results, configurationFile);
-            }*/
+            }
 
-            ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
+            /*ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
             configurationFile.ReadAndExtractData();
-            HeuristicAllocationFinder heuristicAllocationFinder = new HeuristicAllocationFinder(0.3, 1000, configurationFile, 500);
+            HeuristicAllocationFinder heuristicAllocationFinder = new HeuristicAllocationFinder(0.2, 1000, configurationFile, 300);
             Allocation foundAllocation = heuristicAllocationFinder.Run();
             List<Allocation> foundAllocations = (foundAllocation != null) ? (new List<Allocation> { foundAllocation }) : (new List<Allocation>());
-            webBrowser.DocumentText = Displayer.Display(foundAllocations, configurationFile);
+            webBrowser.DocumentText = Displayer.Display(foundAllocations, configurationFile);*/
         }
     }
 }

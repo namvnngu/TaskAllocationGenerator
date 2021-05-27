@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using System.Diagnostics;
+using System.ServiceModel;
 using TaskAllocationUtils.Files;
 using TaskAllocationUtils.Classes;
 using TaskAllocationUtils.Allocations;
+using TaskAllocationUtils.Constants;
 
-namespace TaskAllocationGenerator.Utils.Allocations
+namespace HeuristicService
 {
-    // Genetic Algorithm is chosen
-    public class HeuristicAllocationFinder
+    public class HeuristicAlgorithm
     {
         public double MutationRate { get; set; }
         public Population Population { get; set; }
@@ -16,7 +19,7 @@ namespace TaskAllocationGenerator.Utils.Allocations
         public ConfigurationFile Configuration { get; set; }
         public int NumOfGenerations { get; set; }
 
-        public HeuristicAllocationFinder(
+        public HeuristicAlgorithm(
             double mutationRate,
             int numOfMembers,
             ConfigurationFile configurationFile,
@@ -39,6 +42,7 @@ namespace TaskAllocationGenerator.Utils.Allocations
             Allocation newAllocation = null;
             double minEnergy = double.MaxValue;
             int generations = 0;
+            Stopwatch stopwatch = new Stopwatch();
 
 
             // Generate intial Population
@@ -46,6 +50,12 @@ namespace TaskAllocationGenerator.Utils.Allocations
 
             while (generations < NumOfGenerations)
             {
+                if (stopwatch.ElapsedMilliseconds > AsyncCall.TIMEOUT_LIMIT)
+                {
+                    TimeoutFault timeoutFault = new TimeoutFault("HeuristicService operation timed out");
+                    throw new FaultException<TimeoutFault>(timeoutFault);
+                }
+
                 // Create next generation (reproduction/selection)
                 Population.CreateNextGeneration();
 

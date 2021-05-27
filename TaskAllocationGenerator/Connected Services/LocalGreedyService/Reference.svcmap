@@ -25,6 +25,7 @@
     <MetadataFile FileName="GreedyService1.xsd" MetadataType="Schema" ID="ac28272b-7b45-4bc1-a3b7-3be9b924610b" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd0" />
     <MetadataFile FileName="GreedyService.wsdl" MetadataType="Wsdl" ID="1dee6cbd-5132-4ce3-81a5-477aec7092b1" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?wsdl" />
     <MetadataFile FileName="GreedyService.disco" MetadataType="Disco" ID="fa3dd7a5-2b7e-41bb-9074-2c1653e92074" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?disco" />
+    <MetadataFile FileName="GreedyService4.xsd" MetadataType="Schema" ID="9a2aa246-bbd0-47a1-b4cb-4d9b7effff79" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd4" />
     <MetadataFile FileName="GreedyService2.xsd" MetadataType="Schema" ID="118a6554-ed61-4b8a-8d92-c820ef18f9ee" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd3" />
     <MetadataFile FileName="GreedyService3.xsd" MetadataType="Schema" ID="61c841fb-d15d-4386-8677-3eaa5d90372d" SourceId="1" SourceUrl="http://localhost:63260/GreedyService.svc?xsd=xsd2" />
   </Metadata>
