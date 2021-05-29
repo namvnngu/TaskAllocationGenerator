@@ -16,7 +16,7 @@ namespace TaskAllocationGenerator.Utils.Allocations
             if (allocations.Count == 0) return "";
 
             StringBuilder renderedText = new StringBuilder();
-            Allocation allocation = SelectBest(allocations);
+            Allocation allocation = SelectBest(allocations, configuration);
             int allocationID = allocation.ID;
             double allocationRuntime = allocation.Runtime;
             double allocationEnergy = allocation.Energy;
@@ -72,14 +72,15 @@ namespace TaskAllocationGenerator.Utils.Allocations
             return renderedText.ToString();
         }
 
-        private static Allocation SelectBest(List<Allocation> allocations)
+        private static Allocation SelectBest(List<Allocation> allocations, ConfigurationFile configuration)
         {
             double minEnergy = double.MaxValue;
             Allocation selectedAllocation = allocations[0];
 
             foreach (Allocation allocation in allocations)
             {
-                if (allocation.Energy <= minEnergy)
+                if (allocation.Energy <= minEnergy && 
+                    AllocationValidator.ValidateAllocation(allocation, configuration))
                 {
                     minEnergy = allocation.Energy;
                     selectedAllocation = allocation;

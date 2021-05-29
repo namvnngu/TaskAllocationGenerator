@@ -19,7 +19,7 @@ namespace HeuristicService
         {
             ConfigurationFile configurationFile = new ConfigurationFile(url);
             configurationFile = configurationFile.ReadAndExtractData();
-            HeuristicAlgorithm heuristicAlgorithm = new HeuristicAlgorithm(0.2, 1000, configurationFile, 300);
+            HeuristicAlgorithm heuristicAlgorithm = new HeuristicAlgorithm(0.2, 500, configurationFile, 300);
             Allocation foundAllocation = heuristicAlgorithm.Run();
 
             return foundAllocation;

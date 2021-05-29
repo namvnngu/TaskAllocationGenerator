@@ -83,7 +83,115 @@ namespace HeuristicService
                 generations++;
             }
 
+            if (newAllocation == null)
+            {
+                newAllocation = RunAdditionalSearching();
+            }
+
             return newAllocation;
+        }
+
+        private Allocation RunAdditionalSearching()
+        {
+            int numOfTasks = Configuration.Program.Tasks;
+            int numOfProcessors = Configuration.Program.Processors;
+            double duration = Configuration.Program.Duration;
+            List<List<string>> allocationMap;
+            double[,] tasksRuntimes = CalculateAllTasksRuntimes(numOfTasks, numOfProcessors);
+            double[,] tasksEnergy = CalculateAllTasksEnergy(numOfTasks, numOfProcessors);
+
+
+            // Initalize essentials for a allocation map
+            allocationMap = InitalizeMap(numOfTasks, numOfProcessors);
+            double allocationEnergy = 0.0;
+            double[] allocationRuntime = new double[numOfProcessors];
+
+            for (int taskNum = numOfTasks - 1; taskNum >= 0; taskNum--)
+            {
+                Dictionary<int, double> taskRuntimeInProcessorDict = new Dictionary<int, double>();
+                Task task = Configuration.Tasks[taskNum];
+                int taskRAM = task.RAM;
+                int taskDownload = task.Download;
+                int taskUpload = task.Upload;
+
+                for (int processNum = 0; processNum < numOfProcessors; processNum++)
+                {
+                    double currentTaskRuntime = tasksRuntimes[processNum, taskNum];
+
+                    taskRuntimeInProcessorDict.Add(processNum, currentTaskRuntime);
+                }
+
+                taskRuntimeInProcessorDict = taskRuntimeInProcessorDict.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+                foreach (KeyValuePair<int, double> entry in taskRuntimeInProcessorDict)
+                {
+                    int processorID = entry.Key;
+                    Processor processor = Configuration.Processors[processorID];
+                    int processorRAM = processor.RAM;
+                    int processorDownload = processor.Download;
+                    int processorUpload = processor.Upload;
+                    double currentAllocationRuntime = allocationRuntime[processorID] + tasksRuntimes[processorID, taskNum];
+
+                    if ((taskRAM <= processorRAM) &&
+                        (taskDownload <= processorDownload) &&
+                        (taskUpload <= processorUpload) &&
+                        (currentAllocationRuntime <= duration))
+                    {
+                        allocationMap[processorID][taskNum] = "1";
+                        allocationRuntime[processorID] = currentAllocationRuntime;
+                        allocationEnergy += tasksEnergy[processorID, taskNum];
+
+                        break;
+                    }
+                }
+            }
+
+            Allocation newAllocation = AllocationCalculator.CalculateAllocationValues(allocationMap, Configuration);
+            if (AllocationValidator.ValidateAllocation(newAllocation, Configuration))
+            {
+                return newAllocation;
+            }
+
+
+            return newAllocation;
+        }
+
+        private List<List<string>> InitalizeMap(int numOfTasks, int numOfProcessors)
+        {
+            List<List<string>> allocationMap = new List<List<string>>();
+
+            for (int processNum = 0; processNum < numOfProcessors; processNum++)
+            {
+                List<string> subList = new List<string>();
+
+                for (int taskNum = 0; taskNum < numOfTasks; taskNum++)
+                {
+                    subList.Add("0");
+                }
+
+                allocationMap.Add(subList);
+            }
+
+            return allocationMap;
+        }
+
+        private double[,] CalculateAllTasksRuntimes(int numOfTasks, int numOfProcessors)
+        {
+            double[,] runtimes = new double[numOfProcessors, numOfTasks];
+
+            for (int processNum = 0; processNum < numOfProcessors; processNum++)
+            {
+                for (int taskNum = 0; taskNum < numOfTasks; taskNum++)
+                {
+                    Processor currentProcessor = Configuration.Processors[processNum];
+                    Task currentTask = Configuration.Tasks[taskNum];
+                    double currentProcessorFrequency = currentProcessor.Frequency;
+
+                    runtimes[processNum, taskNum] = currentTask.CalculateRuntime(currentProcessorFrequency);
+                }
+            }
+
+            return runtimes;
         }
 
         private double[,] CalculateAllTasksEnergy(int numOfTasks, int numOfProcessors)
