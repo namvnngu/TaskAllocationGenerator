@@ -62,6 +62,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\RemoteGreedyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\RemoteHeuristicService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AboutBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +137,38 @@
     <None Include="Connected Services\LocalHeuristicService\HeuristicService4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\RemoteGreedyService\GreedyService.wsdl" />
+    <None Include="Connected Services\RemoteGreedyService\GreedyService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteGreedyService\GreedyService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteGreedyService\GreedyService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteGreedyService\GreedyService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteGreedyService\GreedyService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService.wsdl" />
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\TaskAllocationUtils.Classes.Allocation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -147,6 +189,8 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\LocalGreedyService\" />
     <WCFMetadataStorage Include="Connected Services\LocalHeuristicService\" />
+    <WCFMetadataStorage Include="Connected Services\RemoteGreedyService\" />
+    <WCFMetadataStorage Include="Connected Services\RemoteHeuristicService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LocalGreedyService\GreedyService.disco" />
@@ -174,6 +218,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LocalHeuristicService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteHeuristicService\HeuristicService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteHeuristicService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteHeuristicService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteHeuristicService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteGreedyService\GreedyService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteGreedyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteGreedyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RemoteGreedyService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

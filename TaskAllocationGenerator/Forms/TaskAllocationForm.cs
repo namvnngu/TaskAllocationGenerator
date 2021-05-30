@@ -67,13 +67,6 @@ namespace TaskAllocationGenerator
                 List<Allocation> results = asyncHandler.Results;
                 webBrowser.DocumentText = Displayer.Display(results, configurationFile);
             }
-
-            /*ConfigurationFile configurationFile = new ConfigurationFile(urlComboBox.Text);
-            configurationFile.ReadAndExtractData();
-            HeuristicAllocationFinder heuristicAllocationFinder = new HeuristicAllocationFinder(0.2, 1000, configurationFile, 300);
-            Allocation foundAllocation = heuristicAllocationFinder.Run();
-            List<Allocation> foundAllocations = (foundAllocation != null) ? (new List<Allocation> { foundAllocation }) : (new List<Allocation>());
-            webBrowser.DocumentText = Displayer.Display(foundAllocations, configurationFile);*/
         }
     }
 }

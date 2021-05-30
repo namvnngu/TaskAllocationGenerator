@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="00e9841e-b34f-4bc5-9150-321fe817bcf0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GreedyService.disco" MetadataType="Disco" ID="3a4b3688-41ee-44a2-ac29-a2ffeae4c912" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?disco" />
+    <MetadataFile FileName="GreedyService.wsdl" MetadataType="Wsdl" ID="55946d13-5a90-4980-bd00-b4e22bb6cebd" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?wsdl" />
+    <MetadataFile FileName="GreedyService.xsd" MetadataType="Schema" ID="36ae0b76-44ec-45c4-a24b-0811fab98d79" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?xsd=xsd3" />
+    <MetadataFile FileName="GreedyService1.xsd" MetadataType="Schema" ID="7cd93974-3e57-4bd8-9d44-225d93c372b3" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GreedyService2.xsd" MetadataType="Schema" ID="11d7ea6c-7cfa-426f-be23-b67d14e5f380" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?xsd=xsd4" />
+    <MetadataFile FileName="GreedyService3.xsd" MetadataType="Schema" ID="ba99ecd4-935d-400c-b8c8-fa9054b2049e" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GreedyService4.xsd" MetadataType="Schema" ID="de4d28fc-90ed-4b43-8c28-afce1aa43f3c" SourceId="1" SourceUrl="http://alb-52191567.us-east-1.elb.amazonaws.com/GreedyService/GreedyService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
